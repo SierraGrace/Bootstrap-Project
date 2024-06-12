@@ -20,4 +20,6 @@
 	$mysql = new mysqli('localhost', 'root', '', 'users-db');
 	$mysql->query("INSERT INTO `users` (`user_name`, `login`, `password`, `is_admin`) VALUES ('$uname', '$login', '$password', '$isAdmin')");
 	$mysql->close();
+
+	header('Location: http://localhost/Bootstrap-Project');
 ?>
