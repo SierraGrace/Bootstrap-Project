@@ -7,6 +7,29 @@
 		<title></title>
 	</head>
 	<body>
+		<div class="container">
+			<h4>Sign in form</h4>
+			<form id="signinForm">
+				<div class="mb-3">
+					<label class="form-label">User name</label>
+					<input type="text" class="form-control" name="unameInput">
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Login</label>
+					<input type="text" class="form-control" name="loginInput">
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Password</label>
+					<input type="password" class="form-control" name="passwordInput">
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" name="isAdmin">
+					<label class="form-check-label">Admin</label>
+				</div>
+				<button type="submit" class="btn btn-primary">Sign in</button>
+			</form>
+		</div>
+
 		<script src="js/bootstrap.bundle.min.js"></script>
 	</body>
 </html>
