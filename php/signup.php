@@ -10,11 +10,11 @@
 	}
 
 	if(empty($uname) || mb_strlen($uname) > 50) {
-		echo "User name error";
+		echo "User name error<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
 	} else if(empty($login) || mb_strlen($login) > 50) {
-		echo "Login error";
+		echo "Login error<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
 	} else if(empty($password) || mb_strlen($password) > 32) {
-		echo "Password error";
+		echo "Password error<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
 	} else {
 		$mysql = new mysqli('localhost', 'root', '', 'users-db');
 		$mysql->query("INSERT INTO `users` (`user_name`, `login`, `password`, `is_admin`) VALUES ('$uname', '$login', '$password', '$isAdmin')");
