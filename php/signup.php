@@ -17,9 +17,16 @@
 		echo "Password error<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
 	} else {
 		$mysql = new mysqli('localhost', 'root', '', 'users-db');
-		$mysql->query("INSERT INTO `users` (`user_name`, `login`, `password`, `is_admin`) VALUES ('$uname', '$login', '$password', '$isAdmin')");
-		$mysql->close();
+		$result = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'");
 
-		header('Location: http://localhost/Bootstrap-Project');
+		if($result->num_rows > 0) {
+			echo "Login has already been used by another user<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
+			$mysql->close();
+		} else {
+			$mysql->query("INSERT INTO `users` (`user_name`, `login`, `password`, `is_admin`) VALUES ('$uname', '$login', '$password', '$isAdmin')");
+			$mysql->close();
+
+			header('Location: http://localhost/Bootstrap-Project');
+		}
 	}
 ?>
