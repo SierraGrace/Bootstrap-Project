@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+	session_start();
+?>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -7,6 +10,8 @@
 		<title></title>
 	</head>
 	<body>
+		<h4>Welcome, <?=$_SESSION['userName']?>!</h4>
+		<button type="button" class="btn btn-danger">Log out</button>
 		<script src="../js/bootstrap.bundle.min.js"></script>
 	</body>
 </html>
