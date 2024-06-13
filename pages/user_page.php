@@ -10,8 +10,10 @@
 		<title></title>
 	</head>
 	<body>
-		<h4>Welcome, <?=$_SESSION['userName']?>!</h4>
-		<button type="button" class="btn btn-danger">Log out</button>
+		<form id="logoutForm" action="../php/logout.php" method="post">
+			<h4>Welcome, <?=$_SESSION['userName']?>!</h4>
+			<button type="submit" class="btn btn-danger">Log out</button>			
+		</form>
 		<script src="../js/bootstrap.bundle.min.js"></script>
 	</body>
 </html>
