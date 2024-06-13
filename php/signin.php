@@ -7,11 +7,20 @@
 	} else {
 		$mysql = new mysqli('localhost', 'root', '', 'users-db');
 		$result = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
-		$mysql->close();
-
+		
 		if($result->num_rows > 0) {
-			echo "Welcome";
+			$userName = $mysql->query("SELECT `user_name` FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
+			$nameResult = $userName->fetch_assoc();
+			$mysql->close();
+
+			session_start();
+			$_SESSION['userName'] = $nameResult['user_name'];
+			echo $_SESSION['userName'];
+			header('Location: ../pages/user_page.html');
+			session_unset();
+			session_destroy();
 		} else {
+			$mysql->close();
 			echo "Wrong login or password<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign in form</a>";
 		}
 	}
