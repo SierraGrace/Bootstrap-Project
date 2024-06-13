@@ -4,6 +4,7 @@
 
 	$mysql = new mysqli('localhost', 'root', '', 'users-db');
 	$data = $mysql->query("SELECT * FROM `users`");
+	$mysql->close();
 ?>
 <html>
 	<head>
@@ -15,17 +16,19 @@
 	<body>
 		<form id="logoutForm" action="../php/logout.php" method="post">
 			<h4>Welcome, Administrator <?=$_SESSION['userName']?>!</h4>
+			
 			<?php
-				while ($dataResult = $data->fetch_assoc()) {
-			        echo "Id: " . $dataResult['id'] . "<br>";
-			        echo "User name: " . $dataResult['user_name'] . "<br>";
-			        echo "Login: " . $dataResult['login'] . "<br>";
-			        echo "Password: " . $dataResult['password'] . "<br>";
-			    	echo "Is admin: " . $dataResult['is_admin'] . "<br>";
-			        echo "<hr>";
-		    	}
+				while ($dataResult = $data->fetch_assoc()) { ?>
 
-		    	$mysql->close();
+				<div class="row">
+					<div class="col">Id: <?=$dataResult['id']?></div>
+					<div class="col">User name: <?=$dataResult['user_name']?></div>
+					<div class="col">Login: <?=$dataResult['login']?></div>
+					<div class="col">Password: <?=$dataResult['password']?></div>
+					<div class="col">Is admin: <?=$dataResult['is_admin']?></div>
+				</div>
+		    <?php
+				}
 			?>
 			<button type="submit" class="btn btn-danger">Log out</button>			
 		</form>
