@@ -16,9 +16,8 @@
 			session_start();
 			$_SESSION['userName'] = $nameResult['user_name'];
 			echo $_SESSION['userName'];
-			header('Location: ../pages/user_page.html');
-			session_unset();
-			session_destroy();
+			header('Location: ../pages/user_page.php');
+
 		} else {
 			$mysql->close();
 			echo "Wrong login or password<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign in form</a>";
