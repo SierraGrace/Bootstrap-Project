@@ -6,14 +6,14 @@
 		echo "Empty fields<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign in form</a>";
 	} else {
 		$mysql = new mysqli('localhost', 'root', '', 'users-db');
-		$result = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
+		$queryResult = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
 		
-		if ($result->num_rows > 0) {
-			$userName = $mysql->query("SELECT `user_name` FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
-			$nameQueryResult = $userName->fetch_assoc();
+		if ($queryResult->num_rows > 0) {
+			$userNameQuery = $mysql->query("SELECT `user_name` FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
+			$userNameQueryResult = $userNameQuery->fetch_assoc();
 
 			session_start();
-			$_SESSION['userName'] = $nameQueryResult['user_name'];
+			$_SESSION['userName'] = $userNameQueryResult['user_name'];
 
 			$isAdminQuery = $mysql->query("SELECT `is_admin` FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
 			$isAdminQueryResult = $isAdminQuery->fetch_assoc();

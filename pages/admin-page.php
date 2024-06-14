@@ -3,7 +3,7 @@
   session_start();
 
   $mysql = new mysqli('localhost', 'root', '', 'users-db');
-  $data = $mysql->query("SELECT * FROM `users`");
+  $dataQueryResult = $mysql->query("SELECT * FROM `users`");
   $mysql->close();
 ?>
 <html lang="en-us">
@@ -14,17 +14,17 @@
     <title>Admin page</title>
   </head>
   <body>
-    <form id="logoutForm" action="../php/log_out.php" method="post">
+    <form action="../php/log_out.php" method="post">
       <h4>Welcome, Administrator <?=$_SESSION['userName']?>!</h4>
       <?php
-        while ($dataResult = $data->fetch_assoc()) {
+        while ($dataQueryResultProcessed = $dataQueryResult->fetch_assoc()) {
       ?>
           <div class="row">
-            <div class="col">Id: <?=$dataResult['id']?></div>
-            <div class="col">User name: <?=$dataResult['user_name']?></div>
-            <div class="col">Login: <?=$dataResult['login']?></div>
-            <div class="col">Password: <?=$dataResult['password']?></div>
-            <div class="col">Is admin: <?=$dataResult['is_admin']?></div>
+            <div class="col">Id: <?=$dataQueryResultProcessed['id']?></div>
+            <div class="col">User name: <?=$dataQueryResultProcessed['user_name']?></div>
+            <div class="col">Login: <?=$dataQueryResultProcessed['login']?></div>
+            <div class="col">Password: <?=$dataQueryResultProcessed['password']?></div>
+            <div class="col">Is admin: <?=$dataQueryResultProcessed['is_admin']?></div>
           </div>
       <?php
         }
