@@ -14,7 +14,7 @@
     <title>Admin page</title>
   </head>
   <body>
-    <form id="logoutForm" action="../php/logout.php" method="post">
+    <form id="logoutForm" action="../php/log_out.php" method="post">
       <h4>Welcome, Administrator <?=$_SESSION['userName']?>!</h4>
       <?php
         while ($dataResult = $data->fetch_assoc()) {

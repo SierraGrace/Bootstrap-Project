@@ -10,7 +10,7 @@
     <title>User page</title>
   </head>
   <body>
-    <form id="logoutForm" action="../php/logout.php" method="post">
+    <form id="logoutForm" action="../php/log_out.php" method="post">
       <h4>Welcome, <?=$_SESSION['userName']?>!</h4>
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
