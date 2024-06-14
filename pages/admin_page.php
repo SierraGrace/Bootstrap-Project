@@ -11,15 +11,14 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		<title></title>
+		<title>Admin page</title>
 	</head>
 	<body>
 		<form id="logoutForm" action="../php/logout.php" method="post">
 			<h4>Welcome, Administrator <?=$_SESSION['userName']?>!</h4>
-			
 			<?php
-				while ($dataResult = $data->fetch_assoc()) { ?>
-
+				while ($dataResult = $data->fetch_assoc()) {
+			?>
 				<div class="row">
 					<div class="col">Id: <?=$dataResult['id']?></div>
 					<div class="col">User name: <?=$dataResult['user_name']?></div>
