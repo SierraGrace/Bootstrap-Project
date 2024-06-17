@@ -38,5 +38,6 @@
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
     <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/input_handler.js"></script>
   </body>
 </html>

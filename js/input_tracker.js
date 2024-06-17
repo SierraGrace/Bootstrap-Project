@@ -6,12 +6,13 @@ const ws = new WebSocket('ws://localhost:8001');
 
 userNameInput.addEventListener('keyup', event => {
 	ws.send(userNameInput.value);
+	console.log('meh');
 });
 
-loginInput.addEventListener('keyup', event => {
-	ws.send(loginInput.value);
-});
+// loginInput.addEventListener('keyup', event => {
+// 	ws.send(loginInput.value);
+// });
 
-passwordInput.addEventListener('keyup', event => {
-	ws.send(passwordInput.value);
-});
+// passwordInput.addEventListener('keyup', event => {
+// 	ws.send(passwordInput.value);
+// });
