@@ -29,6 +29,12 @@
       <?php
         }
       ?>
+      <hr></hr>
+      <div>
+        <label id="userNameInput">Default name</label>
+        <label id="loginInput">Default login</label>
+        <label id="passordInput">Default password</label>
+      </div>
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
     <script src="../js/bootstrap.bundle.min.js"></script>
