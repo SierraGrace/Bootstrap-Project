@@ -4,7 +4,7 @@ const passwordInput = document.getElementById('passwordInput');
 
 const ws = new WebSocket('ws://localhost:8001');
 
- const message = {
+let message = {
 	"type" : "type",
 	"value" : "value"
 };
