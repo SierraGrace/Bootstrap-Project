@@ -1,6 +1,7 @@
 const nameLabel = document.getElementById('userNameInput');
 const loginLabel = document.getElementById('loginInput');
 const passwordLabel = document.getElementById('passwordInput');
+const isAdminLabel = document.getElementById('isAdminCheck');
 
 const ws = new WebSocket('ws://localhost:8001');
 
@@ -13,5 +14,7 @@ ws.onmessage = response => {
 		loginLabel.textContent = message.value;
 	} else if (message.type === "Password") {
 		passwordLabel.textContent = message.value;
+	} else if (message.type === "Is Admin") {
+		isAdminLabel.textContent = message.value;
 	}
 };
