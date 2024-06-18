@@ -30,13 +30,20 @@
         }
       ?>
       <hr></hr>
+      <h5>Unregistered user</h5>
+      <h6>Sign up form</h6>
       <div class="row">
-        <h5>Unregistered user</h5>
         <label class="col">User name: <label id="userNameInput">Default name</label></label>
         <label class="col">Login: <label id="loginInput">Default login</label></label>
         <label class="col">Password: <label id="passwordInput">Default password</label></label>
         <label class="col">Is Admin: <label id="isAdminCheck">Default admin state</label></label>
       </div>
+      <h6>Sign in form</h6>
+       <div class="row">
+        <label class="col">Login: <label id="loginSignIn">Default login</label></label>
+        <label class="col">Password: <label id="passwordSignIn">Default password</label></label>
+      </div>
+      <hr></hr>
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
     <script src="../js/bootstrap.bundle.min.js"></script>

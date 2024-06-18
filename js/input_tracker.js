@@ -3,6 +3,9 @@ const loginInput = document.getElementById('loginInput');
 const passwordInput = document.getElementById('passwordInput');
 const isAdminCheck = document.getElementById('isAdminCheck');
 
+const loginSignIn = document.getElementById('loginSignIn');
+const passwordSignIn = document.getElementById('passwordSignIn');
+
 const ws = new WebSocket('ws://localhost:8001');
 
 let message = {
@@ -37,9 +40,23 @@ passwordInput.addEventListener('keyup', event => {
 isAdminCheck.addEventListener('change', event => {
 	message.type = "Is Admin";
 	message.value = isAdminCheck.checked;
-	console.log("admin state changed");
 
 	let jsonMessage = JSON.stringify(message);
-	console.log(jsonMessage);
+	ws.send(jsonMessage);
+});
+
+loginSignIn.addEventListener('keyup', event => {
+	message.type = "Login Sign In";
+	message.value = loginSignIn.value;
+
+	let jsonMessage = JSON.stringify(message);
+	ws.send(jsonMessage);
+});
+
+passwordSignIn.addEventListener('keyup', event => {
+	message.type = "Password Sign In";
+	message.value = passwordSignIn.value;
+
+	let jsonMessage = JSON.stringify(message);
 	ws.send(jsonMessage);
 });
