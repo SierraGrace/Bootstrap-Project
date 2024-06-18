@@ -13,19 +13,29 @@ const ws = new WebSocket('ws://localhost:8001');
 ws.onmessage = response => {
 	const message = JSON.parse(response.data);
 
-	if(message.type === "User name") {
-		nameLabel.textContent = message.value;
-	} else if (message.type === "Login") {
-		loginLabel.textContent = message.value;
-	} else if (message.type === "Password") {
-		passwordLabel.textContent = message.value;
-	} else if (message.type === "Is Admin") {
-		isAdminLabel.textContent = message.value;
-	} else if (message.type === "Login Sign In") {
-		loginSignIn.textContent = message.value;
-	} else if (message.type === "Password Sign In") {
-		passwordSignIn.textContent = message.value;
-	} else if (message.type === "Text input") {
-		textInput.textContent = message.value;
+	switch (message.type) {
+		case "User name":
+			nameLabel.textContent = message.value;
+			break;
+		case "Login":
+			loginLabel.textContent = message.value;
+			break;
+		case "Password":
+			passwordLabel.textContent = message.value;
+			break;
+		case "Is Admin":
+			isAdminLabel.textContent = message.value;
+			break;
+		case "Login Sign In":
+			loginSignIn.textContent = message.value;
+			break;
+		case "Password Sign In":
+			passwordSignIn.textContent = message.value;
+			break;
+		case "Text input":
+			textInput.textContent = message.value;
+			break;
+		default:
+			break;
 	}
 };
