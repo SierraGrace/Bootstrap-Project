@@ -10,10 +10,12 @@
     <title>User page</title>
   </head>
   <body>
+    <h4>Welcome, <?=$_SESSION['userName']?>!</h4>
+    <input type="text" placeholder="Type smth here" id="textInput"></input>
     <form action="../php/log_out.php" method="post">
-      <h4>Welcome, <?=$_SESSION['userName']?>!</h4>
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
     <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/user_page_input_tracker.js"></script>
   </body>
 </html>

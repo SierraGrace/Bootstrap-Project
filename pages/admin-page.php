@@ -44,6 +44,12 @@
         <label class="col">Password: <label id="passwordSignIn">Default password</label></label>
       </div>
       <hr></hr>
+      <h5>Registered user</h5>
+      <h6>Input field</h6>
+       <div class="row">
+        <label class="col">Text: <label id="textInput">Default text</label></label>
+      </div>
+      <hr></hr>
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
     <script src="../js/bootstrap.bundle.min.js"></script>
