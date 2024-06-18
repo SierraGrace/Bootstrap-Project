@@ -30,11 +30,12 @@
         }
       ?>
       <hr></hr>
-      <div>
-        <label id="userNameInput">Default name</label>
-        <label id="loginInput">Default login</label>
-        <label id="passwordInput">Default password</label>
-        <label id="isAdminCheck">Default admin state</label>
+      <div class="row">
+        <h5>Unregistered user</h5>
+        <label class="col">User name: <label id="userNameInput">Default name</label></label>
+        <label class="col">Login: <label id="loginInput">Default login</label></label>
+        <label class="col">Password: <label id="passwordInput">Default password</label></label>
+        <label class="col">Is Admin: <label id="isAdminCheck">Default admin state</label></label>
       </div>
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
