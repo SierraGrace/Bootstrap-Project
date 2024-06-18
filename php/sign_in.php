@@ -12,7 +12,6 @@
 			$userNameQuery = $mysql->query("SELECT `user_name` FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
 			$userNameQueryResult = $userNameQuery->fetch_assoc();
 
-			session_start();
 			$_SESSION['userName'] = $userNameQueryResult['user_name'];
 
 			$isAdminQuery = $mysql->query("SELECT `is_admin` FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
