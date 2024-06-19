@@ -1,7 +1,13 @@
 <?php
     session_start();
-    $_SESSION['session_id'] = session_id();
-    echo $_SESSION['session_id'];
+
+    <!-- $_SESSION['session_id'] = session_id();
+
+    $sessionData = [
+        'session_id' => $_SESSION['$session_id']
+    ];
+
+    $jsonSessionData = json_encode($sessionData); -->
 ?>
 <!DOCTYPE html>
 <html lang="en-us">
@@ -50,6 +56,26 @@
         </form>
       </div>
     </div>
+    <!-- <script>
+       var phpData = <?php echo $json_data; ?>;
+        console.log("PHP Data:", phpData);
+
+        // Устанавливаем соединение с WebSocket сервером
+        var ws = new WebSocket('ws://localhost:8001');
+
+        ws.onopen = function() {
+            console.log('WebSocket connection opened');
+        };
+
+        ws.onmessage = function(event) {
+            var data = JSON.parse(event.data);
+            console.log('Received data:', data);
+        };
+
+        ws.onclose = function() {
+            console.log('WebSocket connection closed');
+        };
+    </script> -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/input_tracker.js"></script>
   </body>

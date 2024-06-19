@@ -9,7 +9,8 @@
 	$worker->onConnect = function ($connection) {
 		$connections[$connection->id] = $connection;
 		echo "New connection\n";
-
+	};
+	
 	$worker->onMessage = function ($connection, $data) use ($worker) {
 		foreach($worker->connections as $clientConnection) {
 			$clientConnection->send($data);
