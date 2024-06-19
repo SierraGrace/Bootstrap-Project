@@ -1,13 +1,13 @@
 <?php
     session_start();
 
-    <!-- $_SESSION['session_id'] = session_id();
-
+    $_SESSION['session_id'] = session_id();
     $sessionData = [
-        'session_id' => $_SESSION['$session_id']
+        'type' => 'Session id',
+        'value' => $_SESSION['session_id']
     ];
 
-    $jsonSessionData = json_encode($sessionData); -->
+    $jsonSessionData = json_encode($sessionData);
 ?>
 <!DOCTYPE html>
 <html lang="en-us">
@@ -18,6 +18,7 @@
     <title>Bootstrap-Project</title>
   </head>
   <body>
+    <!-- <?php echo "<pre>"; var_dump($_SESSION);  echo "</pre>"; ?> -->
     <div class="row">
       <div class="col">
         <form action="php/sign_up.php" method="post">
@@ -56,27 +57,16 @@
         </form>
       </div>
     </div>
-    <!-- <script>
-       var phpData = <?php echo $json_data; ?>;
-        console.log("PHP Data:", phpData);
-
-        // Устанавливаем соединение с WebSocket сервером
-        var ws = new WebSocket('ws://localhost:8001');
-
-        ws.onopen = function() {
-            console.log('WebSocket connection opened');
-        };
-
-        ws.onmessage = function(event) {
-            var data = JSON.parse(event.data);
-            console.log('Received data:', data);
-        };
-
-        ws.onclose = function() {
-            console.log('WebSocket connection closed');
-        };
-    </script> -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/input_tracker.js"></script>
+    <script>
+       var sessionData = <?php echo $jsonSessionData;?>;
+        console.log("Session Data:", sessionData);
+
+        ws.onopen = function() {
+            ws.send(JSON.stringify(sessionData));
+            console.log('WebSocket connection opened');
+        };
+    </script>
   </body>
 </html>

@@ -32,6 +32,22 @@
       ?>
       <hr></hr>
       <div id="unregisteredUsers">
+        <!-- <div>
+          <h5>Unregistered user</h5>
+          <h6>Sign up form</h6>
+          <div class="row">
+            <label class="col">User name: <label id="userNameInput">Default name</label></label>
+            <label class="col">Login: <label id="loginInput">Default login</label></label>
+            <label class="col">Password: <label id="passwordInput">Default password</label></label>
+            <label class="col">Is Admin: <label id="isAdminCheck">False</label></label>
+          </div>
+          <h6>Sign in form</h6>
+           <div class="row">
+            <label class="col">Login: <label id="loginSignIn">Default login</label></label>
+            <label class="col">Password: <label id="passwordSignIn">Default password</label></label>
+          </div>
+          <hr></hr>
+        </div>
         <h5>Unregistered user</h5>
         <h6>Sign up form</h6>
         <div class="row">
@@ -59,24 +75,10 @@
           <label class="col">Login: <label id="loginSignIn">Default login</label></label>
           <label class="col">Password: <label id="passwordSignIn">Default password</label></label>
         </div>
-        <hr></hr>
-        <h5>Unregistered user</h5>
-        <h6>Sign up form</h6>
-        <div class="row">
-          <label class="col">User name: <label id="userNameInput">Default name</label></label>
-          <label class="col">Login: <label id="loginInput">Default login</label></label>
-          <label class="col">Password: <label id="passwordInput">Default password</label></label>
-          <label class="col">Is Admin: <label id="isAdminCheck">False</label></label>
-        </div>
-        <h6>Sign in form</h6>
-         <div class="row">
-          <label class="col">Login: <label id="loginSignIn">Default login</label></label>
-          <label class="col">Password: <label id="passwordSignIn">Default password</label></label>
-        </div>
-        <hr></hr>
+        <hr></hr> -->
       </div>
       <div id="registeredUsers">
-        <h5>Registered user</h5>
+        <!-- <h5>Registered user</h5>
         <h6>Input field</h6>
          <div class="row">
           <label class="col">Text: <label id="textInput">Default text</label></label>
@@ -93,7 +95,7 @@
          <div class="row">
           <label class="col">Text: <label id="textInput">Default text</label></label>
         </div>
-        <hr></hr>  
+        <hr></hr>   -->
       </div>
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
