@@ -16,6 +16,7 @@
   <body>
     <form action="../php/log_out.php" method="post">
       <h4>Welcome, Administrator <?=$_SESSION['userName']?>!</h4>
+      <h4>Welcome, <?=$_SESSION['session_id']?>!</h4>
       <?php
         while ($dataQueryResultProcessed = $dataQueryResult->fetch_assoc()) {
       ?>
@@ -30,26 +31,70 @@
         }
       ?>
       <hr></hr>
-      <h5>Unregistered user</h5>
-      <h6>Sign up form</h6>
-      <div class="row">
-        <label class="col">User name: <label id="userNameInput">Default name</label></label>
-        <label class="col">Login: <label id="loginInput">Default login</label></label>
-        <label class="col">Password: <label id="passwordInput">Default password</label></label>
-        <label class="col">Is Admin: <label id="isAdminCheck">Default admin state</label></label>
+      <div id="unregisteredUsers">
+        <h5>Unregistered user</h5>
+        <h6>Sign up form</h6>
+        <div class="row">
+          <label class="col">User name: <label id="userNameInput">Default name</label></label>
+          <label class="col">Login: <label id="loginInput">Default login</label></label>
+          <label class="col">Password: <label id="passwordInput">Default password</label></label>
+          <label class="col">Is Admin: <label id="isAdminCheck">False</label></label>
+        </div>
+        <h6>Sign in form</h6>
+         <div class="row">
+          <label class="col">Login: <label id="loginSignIn">Default login</label></label>
+          <label class="col">Password: <label id="passwordSignIn">Default password</label></label>
+        </div>
+        <hr></hr>
+        <h5>Unregistered user</h5>
+        <h6>Sign up form</h6>
+        <div class="row">
+          <label class="col">User name: <label id="userNameInput">Default name</label></label>
+          <label class="col">Login: <label id="loginInput">Default login</label></label>
+          <label class="col">Password: <label id="passwordInput">Default password</label></label>
+          <label class="col">Is Admin: <label id="isAdminCheck">False</label></label>
+        </div>
+        <h6>Sign in form</h6>
+         <div class="row">
+          <label class="col">Login: <label id="loginSignIn">Default login</label></label>
+          <label class="col">Password: <label id="passwordSignIn">Default password</label></label>
+        </div>
+        <hr></hr>
+        <h5>Unregistered user</h5>
+        <h6>Sign up form</h6>
+        <div class="row">
+          <label class="col">User name: <label id="userNameInput">Default name</label></label>
+          <label class="col">Login: <label id="loginInput">Default login</label></label>
+          <label class="col">Password: <label id="passwordInput">Default password</label></label>
+          <label class="col">Is Admin: <label id="isAdminCheck">False</label></label>
+        </div>
+        <h6>Sign in form</h6>
+         <div class="row">
+          <label class="col">Login: <label id="loginSignIn">Default login</label></label>
+          <label class="col">Password: <label id="passwordSignIn">Default password</label></label>
+        </div>
+        <hr></hr>
       </div>
-      <h6>Sign in form</h6>
-       <div class="row">
-        <label class="col">Login: <label id="loginSignIn">Default login</label></label>
-        <label class="col">Password: <label id="passwordSignIn">Default password</label></label>
+      <div id="registeredUsers">
+        <h5>Registered user</h5>
+        <h6>Input field</h6>
+         <div class="row">
+          <label class="col">Text: <label id="textInput">Default text</label></label>
+        </div>
+        <hr></hr>
+        <h5>Registered user</h5>
+        <h6>Input field</h6>
+         <div class="row">
+          <label class="col">Text: <label id="textInput">Default text</label></label>
+        </div>
+        <hr></hr>
+        <h5>Registered user</h5>
+        <h6>Input field</h6>
+         <div class="row">
+          <label class="col">Text: <label id="textInput">Default text</label></label>
+        </div>
+        <hr></hr>  
       </div>
-      <hr></hr>
-      <h5>Registered user</h5>
-      <h6>Input field</h6>
-       <div class="row">
-        <label class="col">Text: <label id="textInput">Default text</label></label>
-      </div>
-      <hr></hr>
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
     <script src="../js/bootstrap.bundle.min.js"></script>

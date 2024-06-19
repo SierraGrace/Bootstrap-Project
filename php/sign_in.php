@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	
 	$login = $_POST['loginInput'];
 	$password = $_POST['passwordInput'];
 
