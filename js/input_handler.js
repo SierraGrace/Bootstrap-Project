@@ -1,18 +1,19 @@
-const nameLabel = document.getElementById('userNameInput');
-const loginLabel = document.getElementById('loginInput');
-const passwordLabel = document.getElementById('passwordInput');
-const isAdminLabel = document.getElementById('isAdminCheck');
+// const nameLabel = document.getElementById('userNameInput');
+// const loginLabel = document.getElementById('loginInput');
+// const passwordLabel = document.getElementById('passwordInput');
+// const isAdminLabel = document.getElementById('isAdminCheck');
 
-const loginSignIn = document.getElementById('loginSignIn');
-const passwordSignIn = document.getElementById('passwordSignIn');
+// const loginSignIn = document.getElementById('loginSignIn');
+// const passwordSignIn = document.getElementById('passwordSignIn');
 
 const textInput = document.getElementById('textInput');
 
 const ws = new WebSocket('ws://localhost:8001');
 
-function createLabel(colClass, textContent, labelId, labelText) {
+function createLabel(colClass, labelWrapId, textContent, labelId, labelText) {
     var labelWrapper = document.createElement('label');
     labelWrapper.className = colClass;
+    labelWrapper.id = labelWrapId;
     labelWrapper.textContent = textContent;
 
     var labelElement = document.createElement('label');
@@ -43,10 +44,10 @@ ws.onmessage = response => {
 		        // Создаем первый row div
 		        var rowDiv1 = document.createElement('div');
 		        rowDiv1.className = 'row';
-		        rowDiv1.appendChild(createLabel('col', 'User name: ', 'userNameInput', 'Default name'));
-		        rowDiv1.appendChild(createLabel('col', 'Login: ', 'loginInput', 'Default login'));
-		        rowDiv1.appendChild(createLabel('col', 'Password: ', 'passwordInput', 'Default password'));
-		        rowDiv1.appendChild(createLabel('col', 'Is Admin: ', 'isAdminCheck', 'False'));
+		        rowDiv1.appendChild(createLabel('col', 'name', 'User name: ', 'userNameInput', 'Default name'));
+		        rowDiv1.appendChild(createLabel('col', 'login', 'Login: ', 'loginInput', 'Default login'));
+		        rowDiv1.appendChild(createLabel('col', 'password', 'Password: ', 'passwordInput', 'Default password'));
+		        rowDiv1.appendChild(createLabel('col', 'isAdmin', 'Is Admin: ', 'isAdminCheck', 'False'));
 		        containerDiv.appendChild(rowDiv1);
 		        // Создаем и добавляем второй h6 элемент
 		        var h6SignIn = document.createElement('h6');
@@ -56,8 +57,8 @@ ws.onmessage = response => {
 		        var rowDiv2 = document.createElement('div');
 		        rowDiv2.className = 'row';
 		        // Добавляем label элементы во второй row div
-		        rowDiv2.appendChild(createLabel('col', 'Login: ', 'loginSignIn', 'Default login'));
-		        rowDiv2.appendChild(createLabel('col', 'Password: ', 'passwordSignIn', 'Default password'));
+		        rowDiv2.appendChild(createLabel('col', 'loginSignIn', 'Login: ', 'loginSignIn', 'Default login'));
+		        rowDiv2.appendChild(createLabel('col', 'passwordSignIn','Password: ', 'passwordSignIn', 'Default password'));
 		        containerDiv.appendChild(rowDiv2);
 		        // Создаем и добавляем hr элемент
 		        var hrElement = document.createElement('hr');
@@ -69,24 +70,52 @@ ws.onmessage = response => {
 			}
 			break;
 		case "User name":
-			nameLabel.textContent = message.value;
+			var userDiv = document.getElementById(message.session_id);
+			var row = userDiv.querySelector('.row');
+			var label = row.querySelector('#name');
+			var innerLabel = label.querySelector('#userNameInput');
+			innerLabel.textContent = message.value;
 			break;
 		case "Login":
-			loginLabel.textContent = message.value;
+			var userDiv = document.getElementById(message.session_id);
+			var row = userDiv.querySelector('.row');
+			var label = row.querySelector('#login');
+			var innerLabel = label.querySelector('#loginInput');
+			innerLabel.textContent = message.value;
 			break;
 		case "Password":
-			passwordLabel.textContent = message.value;
+			var userDiv = document.getElementById(message.session_id);
+			var row = userDiv.querySelector('.row');
+			var label = row.querySelector('#password');
+			var innerLabel = label.querySelector('#passwordInput');
+			innerLabel.textContent = message.value;
 			break;
 		case "Is Admin":
-			isAdminLabel.textContent = message.value;
+			var userDiv = document.getElementById(message.session_id);
+			var row = userDiv.querySelector('.row');
+			var label = row.querySelector('#isAdmin');
+			var innerLabel = label.querySelector('#isAdminCheck');
+			innerLabel.textContent = message.value;
 			break;
 		case "Login Sign In":
-			loginSignIn.textContent = message.value;
+			var userDiv = document.getElementById(message.session_id);
+			var row = userDiv.querySelector('.row');
+			var label = row.querySelector('#loginSignIn');
+			var innerLabel = label.querySelector('#loginSignIn');
+			innerLabel.textContent = message.value;
 			break;
 		case "Password Sign In":
-			passwordSignIn.textContent = message.value;
+			var userDiv = document.getElementById(message.session_id);
+			var row = userDiv.querySelector('.row');
+			var label = row.querySelector('#passwordSignIn');
+			var innerLabel = label.querySelector('#passwordSignIn');
+			innerLabel.textContent = message.value;
 			break;
 		case "Text input":
+			var userDiv = document.getElementById(message.session_id);
+			var row = userDiv.querySelector('.row');
+			var label = row.querySelector('#name');
+			var innerLabel = label.querySelector('#userNameInput');
 			textInput.textContent = message.value;
 			break;
 		default:

@@ -3,6 +3,7 @@
 
     $_SESSION['session_id'] = session_id();
     $sessionData = [
+        //'my_session_id' => $_SESSION['session_id'],
         'type' => 'Session id',
         'value' => $_SESSION['session_id']
     ];
@@ -58,9 +59,10 @@
       </div>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/input_tracker.js"></script>
     <script>
-       var sessionData = <?php echo $jsonSessionData;?>;
+        const ws = new WebSocket('ws://localhost:8001');
+
+        var sessionData = <?php echo $jsonSessionData;?>;
         console.log("Session Data:", sessionData);
 
         ws.onopen = function() {
@@ -68,5 +70,6 @@
             console.log('WebSocket connection opened');
         };
     </script>
+    <script src="js/input_tracker.js"></script>
   </body>
 </html>

@@ -6,22 +6,26 @@ const isAdminCheck = document.getElementById('isAdminCheck');
 const loginSignIn = document.getElementById('loginSignIn');
 const passwordSignIn = document.getElementById('passwordSignIn');
 
-const ws = new WebSocket('ws://localhost:8001');
-
 let message = {
+	"session_id" : "session_id,",
 	"type" : "type",
 	"value" : "value"
 };
 
 userNameInput.addEventListener('keyup', event => {
+	message.session_id = sessionData.value;
 	message.type = "User name";
 	message.value = userNameInput.value;
+
+	console.log(sessionData);
+	console.log(message.value);
 
 	let jsonMessage = JSON.stringify(message);
 	ws.send(jsonMessage);
 });
 
 loginInput.addEventListener('keyup', event => {
+	message.session_id = sessionData.value;
 	message.type = "Login";
 	message.value = loginInput.value;
 
@@ -30,6 +34,7 @@ loginInput.addEventListener('keyup', event => {
 });
 
 passwordInput.addEventListener('keyup', event => {
+	message.session_id = sessionData.value;
 	message.type = "Password";
 	message.value = passwordInput.value;
 
@@ -38,6 +43,7 @@ passwordInput.addEventListener('keyup', event => {
 });
 
 isAdminCheck.addEventListener('change', event => {
+	message.session_id = sessionData.value;
 	message.type = "Is Admin";
 	message.value = isAdminCheck.checked;
 
@@ -46,6 +52,7 @@ isAdminCheck.addEventListener('change', event => {
 });
 
 loginSignIn.addEventListener('keyup', event => {
+	message.session_id = sessionData.value;
 	message.type = "Login Sign In";
 	message.value = loginSignIn.value;
 
@@ -54,6 +61,7 @@ loginSignIn.addEventListener('keyup', event => {
 });
 
 passwordSignIn.addEventListener('keyup', event => {
+	message.session_id = sessionData.value;
 	message.type = "Password Sign In";
 	message.value = passwordSignIn.value;
 

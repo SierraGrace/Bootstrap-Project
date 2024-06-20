@@ -23,7 +23,7 @@
 		foreach($worker->connections as $clientConnection) {
 			// if cliconn->id == admin conn id >>> send mess
 			$clientConnection->send($data);
-			echo $data;
+			echo $data . "\n";
 		}
 	};
 
