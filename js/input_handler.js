@@ -44,6 +44,7 @@ ws.onmessage = response => {
 		        // Создаем первый row div
 		        var rowDiv1 = document.createElement('div');
 		        rowDiv1.className = 'row';
+		        rowDiv1.id = 'signUp';
 		        rowDiv1.appendChild(createLabel('col', 'name', 'User name: ', 'userNameInput', 'Default name'));
 		        rowDiv1.appendChild(createLabel('col', 'login', 'Login: ', 'loginInput', 'Default login'));
 		        rowDiv1.appendChild(createLabel('col', 'password', 'Password: ', 'passwordInput', 'Default password'));
@@ -56,6 +57,7 @@ ws.onmessage = response => {
 		        // Создаем второй row div
 		        var rowDiv2 = document.createElement('div');
 		        rowDiv2.className = 'row';
+		        rowDiv2.id = 'signIn';
 		        // Добавляем label элементы во второй row div
 		        rowDiv2.appendChild(createLabel('col', 'loginSignIn', 'Login: ', 'loginSignIn', 'Default login'));
 		        rowDiv2.appendChild(createLabel('col', 'passwordSignIn','Password: ', 'passwordSignIn', 'Default password'));
@@ -71,42 +73,42 @@ ws.onmessage = response => {
 			break;
 		case "User name":
 			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('.row');
+			var row = userDiv.querySelector('#signUp');
 			var label = row.querySelector('#name');
 			var innerLabel = label.querySelector('#userNameInput');
 			innerLabel.textContent = message.value;
 			break;
 		case "Login":
 			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('.row');
+			var row = userDiv.querySelector('#signUp');
 			var label = row.querySelector('#login');
 			var innerLabel = label.querySelector('#loginInput');
 			innerLabel.textContent = message.value;
 			break;
 		case "Password":
 			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('.row');
+			var row = userDiv.querySelector('#signUp');
 			var label = row.querySelector('#password');
 			var innerLabel = label.querySelector('#passwordInput');
 			innerLabel.textContent = message.value;
 			break;
 		case "Is Admin":
 			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('.row');
+			var row = userDiv.querySelector('#signUp');
 			var label = row.querySelector('#isAdmin');
 			var innerLabel = label.querySelector('#isAdminCheck');
 			innerLabel.textContent = message.value;
 			break;
 		case "Login Sign In":
 			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('.row');
+			var row = userDiv.querySelector('#signIn');
 			var label = row.querySelector('#loginSignIn');
 			var innerLabel = label.querySelector('#loginSignIn');
 			innerLabel.textContent = message.value;
 			break;
 		case "Password Sign In":
 			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('.row');
+			var row = userDiv.querySelector('#signIn');
 			var label = row.querySelector('#passwordSignIn');
 			var innerLabel = label.querySelector('#passwordSignIn');
 			innerLabel.textContent = message.value;

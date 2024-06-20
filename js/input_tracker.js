@@ -1,10 +1,10 @@
-const userNameInput = document.getElementById('userNameInput');
-const loginInput = document.getElementById('loginInput');
-const passwordInput = document.getElementById('passwordInput');
-const isAdminCheck = document.getElementById('isAdminCheck');
+// const userNameInput = document.getElementById('userNameInput');
+// const loginInput = document.getElementById('loginInput');
+// const passwordInput = document.getElementById('passwordInput');
+// const isAdminCheck = document.getElementById('isAdminCheck');
 
-const loginSignIn = document.getElementById('loginSignIn');
-const passwordSignIn = document.getElementById('passwordSignIn');
+ // const loginSignIn = document.getElementById('loginSignIn');
+ // const passwordSignIn = document.getElementById('passwordSignIn');
 
 let message = {
 	"session_id" : "session_id,",
