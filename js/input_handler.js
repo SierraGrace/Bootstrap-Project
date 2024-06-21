@@ -70,6 +70,9 @@ ws.onmessage = response => {
 
 					document.getElementById('unregisteredUsers').appendChild(containerDiv);
 					console.log("Session id successfully transfered: " + message.value);
+	        	} else if (existingDiv) {
+	        		console.log(message.value);
+	        		existingDiv.remove();
 	        	}
 	    	} else if (message.logged_in === 1) {
 	    		var existingDiv = document.getElementById(message.value);
