@@ -23,7 +23,7 @@
 			$mysql->query("INSERT INTO `users` (`user_name`, `login`, `password`, `is_admin`) VALUES ('$userName', '$login', '$password', '$isAdmin')");
 			$mysql->close();
 
-			header('Location: http://localhost/Bootstrap-Project');
+			header('Location: http://localhost/Bootstrap-Project/index.php');
 		} else {
 			echo "Login has already been used by another user<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
 			$mysql->close();
