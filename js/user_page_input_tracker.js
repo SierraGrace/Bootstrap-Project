@@ -1,8 +1,16 @@
-const textInput = document.getElementById('textInput');
+let textInput;
+
+if (document.getElementById('textInput')) {
+	console.log("Kuru kuru");
+} else {
+	console.log("Not kuru kuru(((");
+}
 
 const ws = new WebSocket('ws://localhost:8001');
 
 let message = {
+	//"logged_in" : 0,
+	//"session_id" : "session_id,",
 	"type" : "type",
 	"value" : "value"
 };

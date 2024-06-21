@@ -29,6 +29,8 @@ ws.onmessage = response => {
 
 	switch (message.type) {
 		case "Session id":
+			console.log("Kuru kuru");
+			console.log(message.session_id);
 			var existingDiv = document.getElementById(message.value);
 			if (!existingDiv) {
 				var containerDiv = document.createElement('div');
@@ -72,6 +74,7 @@ ws.onmessage = response => {
 			}
 			break;
 		case "User name":
+			console.log(message.session_id);
 			var userDiv = document.getElementById(message.session_id);
 			var row = userDiv.querySelector('#signUp');
 			var label = row.querySelector('#name');
