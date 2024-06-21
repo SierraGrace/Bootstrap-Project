@@ -62,7 +62,7 @@ ws.onmessage = response => {
 			        rowDiv2.id = 'signIn';
 
 			        rowDiv2.appendChild(createLabel('col', 'loginSignIn', 'Login: ', 'loginSignIn', 'Default login'));
-			        rowDiv2.appendChild(createLabel('col', 'passwordSignIn','Password: ', 'passwordSignIn', 'Default password'));
+			        rowDiv2.appendChild(createLabel('col', 'passwordSignIn', 'Password: ', 'passwordSignIn', 'Default password'));
 			        containerDiv.appendChild(rowDiv2);
 
 			        var hrElement = document.createElement('hr');
@@ -72,11 +72,10 @@ ws.onmessage = response => {
 					console.log("Session id successfully transfered: " + message.value);
 	        	}
 	    	} else if (message.logged_in === 1) {
-	    		// var existingDiv = document.getElementById(message.value);
+	    		var existingDiv = document.getElementById(message.value);
 
-	        	// if (!existingDiv) {
-	        	// 	var existingDiv = document.getElementById(message.value);
-				// 	existingDiv.remove();
+	        	if (existingDiv) {
+				 	existingDiv.remove();
 
 					var containerDiv = document.createElement('div');
 					containerDiv.id = message.value;
@@ -95,7 +94,7 @@ ws.onmessage = response => {
 					rowDiv1.className = 'row';
 					rowDiv1.id = 'input';
 
-					rowDiv1.appendChild(createLabel('col', 'labelWrap', 'Text: ', 'textInput', 'Default text'));
+					rowDiv1.appendChild(createLabel('col', 'inputWrapper', 'Text: ', 'textInput', 'Default text'));
 					containerDiv.appendChild(rowDiv1);
 
 					var hrElement = document.createElement('hr');
@@ -103,7 +102,7 @@ ws.onmessage = response => {
 
 	        		document.getElementById('registeredUsers').appendChild(containerDiv);
 					console.log("Session id successfully transfered: " + message.value);
-				// }
+				}
 			}
 			break;
 		case "User name":
@@ -125,11 +124,7 @@ ws.onmessage = response => {
 			changeDivData(message.session_id, '#signIn', '#passwordSignIn', '#passwordSignIn', message.value);
 			break;
 		case "Text input":
-			// var userDiv = document.getElementById(message.session_id);
-			// var row = userDiv.querySelector('.row');
-			// var label = row.querySelector('#name');
-			// var innerLabel = label.querySelector('#userNameInput');
-			// textInput.textContent = message.value;
+			changeDivData(message.session_id, '#input', '#inputWrapper', '#textInput', message.value);
 			break;
 		default:
 			break;
