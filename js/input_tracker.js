@@ -1,11 +1,3 @@
-// const userNameInput = document.getElementById('userNameInput');
-// const loginInput = document.getElementById('loginInput');
-// const passwordInput = document.getElementById('passwordInput');
-// const isAdminCheck = document.getElementById('isAdminCheck');
-
- // const loginSignIn = document.getElementById('loginSignIn');
- // const passwordSignIn = document.getElementById('passwordSignIn');
- //Why does it work?
 let message = {
 	"logged_in" : 0,
 	"session_id" : sessionData.value,
