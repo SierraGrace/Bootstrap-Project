@@ -1,4 +1,4 @@
-const userNameInput = document.getElementById('userNameInput');
+// const userNameInput = document.getElementById('userNameInput');
 // const loginInput = document.getElementById('loginInput');
 // const passwordInput = document.getElementById('passwordInput');
 // const isAdminCheck = document.getElementById('isAdminCheck');
@@ -16,9 +16,6 @@ let message = {
 userNameInput.addEventListener('keyup', event => {
 	message.type = "User name";
 	message.value = userNameInput.value;
-
-	console.log(message.session_id);
-	console.log("Kuru kuru");
 
 	let jsonMessage = JSON.stringify(message);
 	ws.send(jsonMessage);

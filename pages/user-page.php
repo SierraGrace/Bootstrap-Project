@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <?php
   session_start();
+
+  $sessionData = [
+      'logged_in' => 1,
+      'type' => 'Session id',
+      'value' => $_SESSION['session_id']
+  ];
+
+  $jsonSessionData = json_encode($sessionData);
 ?>
 <html lang="en-us">
   <head>
@@ -16,6 +24,17 @@
       <button type="submit" class="btn btn-danger">Log out</button>			
     </form>
     <script src="../js/bootstrap.bundle.min.js"></script>
+    <script>
+        const ws = new WebSocket('ws://localhost:8001');
+
+        var sessionData = <?php echo $jsonSessionData;?>;
+        console.log("Session Data:", sessionData);
+
+        ws.onopen = function() {
+            ws.send(JSON.stringify(sessionData));
+            console.log('WebSocket connection opened');
+        };
+    </script>
     <script src="../js/user_page_input_tracker.js"></script>
   </body>
 </html>
