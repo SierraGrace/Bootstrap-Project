@@ -1,4 +1,4 @@
-// const userNameInput = document.getElementById('userNameInput');
+const userNameInput = document.getElementById('userNameInput');
 // const loginInput = document.getElementById('loginInput');
 // const passwordInput = document.getElementById('passwordInput');
 // const isAdminCheck = document.getElementById('isAdminCheck');
@@ -8,22 +8,23 @@
  //Why does it work?
 let message = {
 	"logged_in" : 0,
-	"session_id" : "session_id,",
+	"session_id" : sessionData.value,
 	"type" : "type",
 	"value" : "value"
 };
 
 userNameInput.addEventListener('keyup', event => {
-	message.session_id = sessionData.value;
 	message.type = "User name";
 	message.value = userNameInput.value;
+
+	console.log(message.session_id);
+	console.log("Kuru kuru");
 
 	let jsonMessage = JSON.stringify(message);
 	ws.send(jsonMessage);
 });
 
 loginInput.addEventListener('keyup', event => {
-	message.session_id = sessionData.value;
 	message.type = "Login";
 	message.value = loginInput.value;
 
@@ -32,7 +33,6 @@ loginInput.addEventListener('keyup', event => {
 });
 
 passwordInput.addEventListener('keyup', event => {
-	message.session_id = sessionData.value;
 	message.type = "Password";
 	message.value = passwordInput.value;
 
@@ -41,7 +41,6 @@ passwordInput.addEventListener('keyup', event => {
 });
 
 isAdminCheck.addEventListener('change', event => {
-	message.session_id = sessionData.value;
 	message.type = "Is Admin";
 	message.value = isAdminCheck.checked;
 
@@ -50,7 +49,6 @@ isAdminCheck.addEventListener('change', event => {
 });
 
 loginSignIn.addEventListener('keyup', event => {
-	message.session_id = sessionData.value;
 	message.type = "Login Sign In";
 	message.value = loginSignIn.value;
 
@@ -59,7 +57,6 @@ loginSignIn.addEventListener('keyup', event => {
 });
 
 passwordSignIn.addEventListener('keyup', event => {
-	message.session_id = sessionData.value;
 	message.type = "Password Sign In";
 	message.value = passwordSignIn.value;
 
