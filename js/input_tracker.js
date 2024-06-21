@@ -7,20 +7,16 @@
  // const passwordSignIn = document.getElementById('passwordSignIn');
  //Why does it work?
 let message = {
-	//"logged_in" : 0,
+	"logged_in" : 0,
 	"session_id" : "session_id,",
 	"type" : "type",
 	"value" : "value"
 };
 
 userNameInput.addEventListener('keyup', event => {
-	//message.logged_in = 0;
 	message.session_id = sessionData.value;
 	message.type = "User name";
 	message.value = userNameInput.value;
-
-	console.log(sessionData);
-	console.log(message.value);
 
 	let jsonMessage = JSON.stringify(message);
 	ws.send(jsonMessage);

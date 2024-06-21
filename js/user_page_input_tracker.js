@@ -9,8 +9,8 @@ if (document.getElementById('textInput')) {
 const ws = new WebSocket('ws://localhost:8001');
 
 let message = {
-	//"logged_in" : 0,
-	//"session_id" : "session_id,",
+	"logged_in" : 1,
+	"session_id" : "session_id,",
 	"type" : "type",
 	"value" : "value"
 };

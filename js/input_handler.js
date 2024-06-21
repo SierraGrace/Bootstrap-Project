@@ -45,8 +45,6 @@ ws.onmessage = response => {
 
 	switch (message.type) {
 		case "Session id":
-			console.log("Kuru kuru");
-			console.log(message.session_id);
 			var existingDiv = document.getElementById(message.value);
 			if (!existingDiv) {
 				var containerDiv = document.createElement('div');
@@ -84,18 +82,19 @@ ws.onmessage = response => {
 		        var hrElement = document.createElement('hr');
 		        containerDiv.appendChild(hrElement);
 		        // Добавляем созданный контейнер в DOM
-		        document.getElementById('unregisteredUsers').appendChild(containerDiv);
-				console.log("Session id successfully transfered: " + message.value);
-				//console.log(containerDiv);
+		        if (message.logged_in == 0) {
+					document.getElementById('unregisteredUsers').appendChild(containerDiv);
+					console.log("Session id successfully transfered: " + message.value);
+	        	} else {
+	        		document.getElementById('registeredUsers').appendChild(containerDiv);
+					console.log("Session id successfully transfered: " + message.value);
+	        	}
 			}
 			break;
 		case "User name":
-			console.log(message.session_id);
-			console.log("Meow");
 			changeDivData(message.session_id, '#signUp', '#name', '#userNameInput', message.value);
 			break;
 		case "Login":
-			console.log(message.session_id);
 			changeDivData(message.session_id, '#signUp', '#login', '#loginInput', message.value);
 			break;
 		case "Password":
