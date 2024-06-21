@@ -3,7 +3,7 @@
 
     $_SESSION['session_id'] = session_id();
     $sessionData = [
-        //'my_session_id' => $_SESSION['session_id'],
+        'logged_in' => 0,
         'type' => 'Session id',
         'value' => $_SESSION['session_id']
     ];
