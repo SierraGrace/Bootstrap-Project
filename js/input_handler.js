@@ -24,6 +24,22 @@ function createLabel(colClass, labelWrapId, textContent, labelId, labelText) {
     return labelWrapper;
 };
 
+function changeDivData(session_id, formType, rowType, lableType, messageValue) {
+	var userDiv = document.getElementById(session_id);
+	var row = userDiv.querySelector(formType);
+	var label = row.querySelector(rowType);
+	var innerLabel = label.querySelector(lableType);
+	innerLabel.textContent = messageValue;
+};
+
+//changeDivData(message.session_id, '#signUp', '#name', '#userNameInput', message.value);
+
+// var userDiv = document.getElementById(message.session_id);
+// 			var row = userDiv.querySelector('#');
+// 			var label = row.querySelector();
+// 			var innerLabel = label.querySelector();
+// 			innerLabel.textContent = ;
+
 ws.onmessage = response => {
 	const message = JSON.parse(response.data);
 
@@ -75,53 +91,31 @@ ws.onmessage = response => {
 			break;
 		case "User name":
 			console.log(message.session_id);
-			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('#signUp');
-			var label = row.querySelector('#name');
-			var innerLabel = label.querySelector('#userNameInput');
-			innerLabel.textContent = message.value;
+			console.log("Meow");
+			changeDivData(message.session_id, '#signUp', '#name', '#userNameInput', message.value);
 			break;
 		case "Login":
-			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('#signUp');
-			var label = row.querySelector('#login');
-			var innerLabel = label.querySelector('#loginInput');
-			innerLabel.textContent = message.value;
+			console.log(message.session_id);
+			changeDivData(message.session_id, '#signUp', '#login', '#loginInput', message.value);
 			break;
 		case "Password":
-			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('#signUp');
-			var label = row.querySelector('#password');
-			var innerLabel = label.querySelector('#passwordInput');
-			innerLabel.textContent = message.value;
+			changeDivData(message.session_id, '#signUp', '#password', '#passwordInput', message.value);
 			break;
 		case "Is Admin":
-			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('#signUp');
-			var label = row.querySelector('#isAdmin');
-			var innerLabel = label.querySelector('#isAdminCheck');
-			innerLabel.textContent = message.value;
+			changeDivData(message.session_id, '#signUp', '#isAdmin', '#isAdminCheck', message.value);
 			break;
 		case "Login Sign In":
-			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('#signIn');
-			var label = row.querySelector('#loginSignIn');
-			var innerLabel = label.querySelector('#loginSignIn');
-			innerLabel.textContent = message.value;
+			changeDivData(message.session_id, '#signIn', '#loginSignIn', '#loginSignIn', message.value);
 			break;
 		case "Password Sign In":
-			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('#signIn');
-			var label = row.querySelector('#passwordSignIn');
-			var innerLabel = label.querySelector('#passwordSignIn');
-			innerLabel.textContent = message.value;
+			changeDivData(message.session_id, '#signIn', '#passwordSignIn', '#passwordSignIn', message.value);
 			break;
 		case "Text input":
-			var userDiv = document.getElementById(message.session_id);
-			var row = userDiv.querySelector('.row');
-			var label = row.querySelector('#name');
-			var innerLabel = label.querySelector('#userNameInput');
-			textInput.textContent = message.value;
+			// var userDiv = document.getElementById(message.session_id);
+			// var row = userDiv.querySelector('.row');
+			// var label = row.querySelector('#name');
+			// var innerLabel = label.querySelector('#userNameInput');
+			// textInput.textContent = message.value;
 			break;
 		default:
 			break;
