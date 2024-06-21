@@ -26,18 +26,18 @@
           <h4>Sign up form</h4>
           <div class="mb-3">
             <label class="form-label">User name</label>
-            <input type="text" class="form-control" id="userNameInput"></input>
+            <input type="text" class="form-control" name="userNameInput" id="userNameInput"></input>
           </div>
           <div class="mb-3">
             <label class="form-label">Login</label>
-            <input type="text" class="form-control" id="loginInput"></input>
+            <input type="text" class="form-control" name="loginInput" id="loginInput"></input>
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input type="password" class="form-control" id="passwordInput"></input>
+            <input type="password" class="form-control" name="passwordInput" id="passwordInput"></input>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="isAdminCheck"></input>
+            <input class="form-check-input" type="checkbox" name="isAdmin" id="isAdminCheck"></input>
             <label class="form-check-label">Admin</label>
           </div>
           <button type="submit" class="btn btn-primary">Sign up</button>
