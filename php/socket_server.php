@@ -57,6 +57,19 @@
 	    echo "Data saved V4";
 	}
 
+	function deleteData($sessionId) {
+	    global $dataFile;
+	    $userData = loadData();
+
+	    if (isset($userData[$sessionId])) {
+	        unset($userData[$sessionId]);
+	    }
+
+    	file_put_contents($dataFile, json_encode($userData, JSON_PRETTY_PRINT));
+
+    	echo "Data deleted";
+	}
+
 	$worker->onConnect = function ($connection) {
 		$connections[$connection->id] = $connection;
 
@@ -96,6 +109,8 @@
 
 	$worker->onClose = function ($connection) use (&$connections) {
 		unset($connections[$connection->id]);
+		//deleteData();
+
 		echo "Connection closed\n";
 	};
 
