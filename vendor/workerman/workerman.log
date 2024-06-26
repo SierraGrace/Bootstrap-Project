@@ -7,3 +7,33 @@ Stack trace:
 #4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
 #5 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(46): Workerman\Worker::runAll()
 #6 {main}
+2024-06-26 15:29:29 pid:1 Error: Call to undefined function loadData() in C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php:14
+Stack trace:
+#0 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(73): saveData(NULL, 0, 'Session id', 'g5rt76gia5luv4s...')
+#1 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), '{"logged_in":0,...')
+#2 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #20)
+#3 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#5 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#6 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(91): Workerman\Worker::runAll()
+#7 {main}
+2024-06-26 15:31:20 pid:1 Error: Call to undefined function loadData() in C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php:14
+Stack trace:
+#0 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(73): saveData('g5rt76gia5luv4s...', 0, 'Session id', 'g5rt76gia5luv4s...')
+#1 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), '{"logged_in":0,...')
+#2 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #20)
+#3 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#5 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#6 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(91): Workerman\Worker::runAll()
+#7 {main}
+2024-06-26 15:31:45 pid:1 ArgumentCountError: Too few arguments to function saveData(), 1 passed in C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php on line 81 and exactly 4 expected in C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php:12
+Stack trace:
+#0 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(81): saveData('{"logged_in":0,...')
+#1 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), '{"logged_in":0,...')
+#2 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #20)
+#3 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#5 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#6 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(91): Workerman\Worker::runAll()
+#7 {main}

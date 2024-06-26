@@ -1,0 +1,54 @@
+{
+    "3gl5i0r1qb55c9hrqiaif4u3nc": {
+        "logged_in": 0,
+        "session_id": "3gl5i0r1qb55c9hrqiaif4u3nc",
+        "messages": [
+            {
+                "type": "Session id",
+                "value": "3gl5i0r1qb55c9hrqiaif4u3nc"
+            },
+            {
+                "type": "User name",
+                "value": "dwdfe"
+            },
+            {
+                "type": "Login",
+                "value": "d3f2"
+            },
+            {
+                "type": "Password",
+                "value": "d23f23f"
+            }
+        ]
+    },
+    "g5rt76gia5luv4s4bi4ba7qhmq": {
+        "logged_in": 0,
+        "session_id": "g5rt76gia5luv4s4bi4ba7qhmq",
+        "messages": [
+            {
+                "type": "Session id",
+                "value": "g5rt76gia5luv4s4bi4ba7qhmq"
+            },
+            {
+                "type": "User name",
+                "value": "123456789"
+            },
+            {
+                "type": "Login",
+                "value": "98765432"
+            },
+            {
+                "type": "Password",
+                "value": "defgrb3rg3rg"
+            },
+            {
+                "type": "Login Sign In",
+                "value": "qwerty"
+            },
+            {
+                "type": "Password Sign In",
+                "value": "ytrewq"
+            }
+        ]
+    }
+}
