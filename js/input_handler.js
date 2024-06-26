@@ -2,6 +2,10 @@ const textInput = document.getElementById('textInput');
 
 const ws = new WebSocket('ws://localhost:8001');
 
+ws.onopen = function() {
+	ws.send('admin');
+};
+
 let createdFlag = 0;
 
 function createLabel(colClass, labelWrapId, textContent, labelId, labelText) {
@@ -93,6 +97,8 @@ function createRegisteredUserDiv(message) {
 };
 
 ws.onmessage = response => {
+
+	//console.log("Data arrived");
 	const message = JSON.parse(response.data);
 
 	switch (message.type) {

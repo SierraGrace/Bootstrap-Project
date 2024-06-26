@@ -1,0 +1,9 @@
+2024-06-26 11:39:13 pid:1 Error: Undefined constant "n" in C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php:30
+Stack trace:
+#0 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), 'admin')
+#1 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #23)
+#2 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#3 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#5 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(46): Workerman\Worker::runAll()
+#6 {main}

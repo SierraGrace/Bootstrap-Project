@@ -9,6 +9,8 @@ userNameInput.addEventListener('keyup', event => {
 	message.type = "User name";
 	message.value = userNameInput.value;
 
+	console.log(message);
+
 	let jsonMessage = JSON.stringify(message);
 	ws.send(jsonMessage);
 });
