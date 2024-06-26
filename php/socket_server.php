@@ -78,32 +78,25 @@
 		echo "IP: " . $connection->getRemoteIp() . "\n";
    		echo "Remote port: " . $connection->getRemotePort() . "\n";
    		echo "Used prototocol: " . $connection->protocol . "\n";
-   		//print_r($connection);
 	};
 
-	$worker->onMessage = function ($connection, $data) use ($worker, $adminConnections) {
+	$worker->onMessage = function ($connection, $data) use ($worker, &$adminConnections) {
 
 
-		// echo "\nData catched!\n"; // Это проверка на то, что данные вообще приходят сюда
+		echo "\nData catched!\n";
 
-		// if($data === 'admin') { 									// Суть: если полученная $data == 'admin', то добавляем связь в массив
-		// 	$adminConnections[$connection->id] = $connection;	    // $adminConnections. Если else, тоесть буквально что угодно, кроме строчки
-		// 	echo "Admin connected\n";								// 'admin'(В нашем случае JSON-сообщение), то отправляем $data по тем связям, 
-		// } else {													// что уже в массиве.
-		// 	foreach($adminConnections as $adminCon) {
-		// 		$adminCon->send($data);								// По итогу блок if выполняется успешно, а блок else не выполняется совсем.
-		// 		echo 'Data send to admins';
-		// 		echo $data . "\n";
-		// 	}
-		// }
+		if($data === 'admin') {
+			$adminConnections[$connection->id] = $connection;
+			echo "Admin connected\n";
+		} else {
+			$message = json_decode($data, true);
+			saveData($message['logged_in'], $message['session_id'], $message['type'], $message['value']);
 
-
-		$message = json_decode($data, true);
-		saveData($message['logged_in'], $message['session_id'], $message['type'], $message['value']);
-
-		foreach($worker->connections as $clientConnection) {
-			$clientConnection->send($data);
-			echo $data . "\n";
+			foreach($adminConnections as $adminCon) {
+				$adminCon->send($data);
+				echo 'Data send to admins';
+				echo $data . "\n";
+			}
 		}
 	};
 
