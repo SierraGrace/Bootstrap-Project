@@ -20,7 +20,7 @@
 	    return [];
 	}
 
-	function saveData($sessionId, $logged_in, $type, $value) {
+	function saveData($logged_in, $sessionId, $type, $value) {
 	    global $dataFile;
 	    $userData = loadData();
 
@@ -69,32 +69,29 @@
 	};
 
 	$worker->onMessage = function ($connection, $data) use ($worker, $adminConnections) {
-		// post form login is-admin >>>  add conn id to array
-		//
-		// echo "\nData catched!\n";
 
-		// if($data === 'admin') {
-		// 	$adminConnections[$connection->id] = $connection;
-		// 	echo "Admin connected\n";
-		// } else {
+
+		// echo "\nData catched!\n"; // Это проверка на то, что данные вообще приходят сюда
+
+		// if($data === 'admin') { 									// Суть: если полученная $data == 'admin', то добавляем связь в массив
+		// 	$adminConnections[$connection->id] = $connection;	    // $adminConnections. Если else, тоесть буквально что угодно, кроме строчки
+		// 	echo "Admin connected\n";								// 'admin'(В нашем случае JSON-сообщение), то отправляем $data по тем связям, 
+		// } else {													// что уже в массиве.
 		// 	foreach($adminConnections as $adminCon) {
-		// 		// if cliconn->id == admin conn id >>> send mess
-		// 		$adminCon->send($data);
+		// 		$adminCon->send($data);								// По итогу блок if выполняется успешно, а блок else не выполняется совсем.
 		// 		echo 'Data send to admins';
 		// 		echo $data . "\n";
 		// 	}
 		// }
-		$message = json_decode($data, true);
 
-		saveData($message['session_id'], $message['logged_in'], $message['type'], $message['value']);
+
+		$message = json_decode($data, true);
+		saveData($message['logged_in'], $message['session_id'], $message['type'], $message['value']);
 
 		foreach($worker->connections as $clientConnection) {
-			// if cliconn->id == admin conn id >>> send mess
 			$clientConnection->send($data);
 			echo $data . "\n";
 		}
-
-		//print_r($adminConnections);
 	};
 
 	$worker->onClose = function ($connection) use (&$connections) {
