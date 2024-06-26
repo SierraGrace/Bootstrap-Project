@@ -10,51 +10,52 @@
 	$connections = [];
 
 	function loadData() {
-    global $dataFile;
-    if (file_exists($dataFile)) {
-        $data = file_get_contents($dataFile);
-        return json_decode($data, true);
-    }
-    return [];
-}
+	    global $dataFile;
+
+	    if (file_exists($dataFile)) {
+	        $data = file_get_contents($dataFile);
+	        return json_decode($data, true);
+	    }
+
+	    return [];
+	}
 
 	function saveData($sessionId, $logged_in, $type, $value) {
-    global $dataFile;
-    $userData = loadData();
+	    global $dataFile;
+	    $userData = loadData();
 
-    // Если данных для данного sessionId нет, создаем их
-    if (!isset($userData[$sessionId])) {
-        $userData[$sessionId] = [
-            'logged_in' => $logged_in,
-            'session_id' => $sessionId,
-            'messages' => []
-        ];
-    } else {
-        // Обновление статуса logged_in для существующего sessionId
-        $userData[$sessionId]['logged_in'] = $logged_in;
-    }
+	    if (!isset($userData[$sessionId])) {
+	        $userData[$sessionId] = [
+	            'logged_in' => $logged_in,
+	            'session_id' => $sessionId,
+	            'messages' => []
+	        ];
+	    } else {
+	        $userData[$sessionId]['logged_in'] = $logged_in;
+	    }
 
-    // Обновление или добавление нового типа сообщения
-    $found = false;
-    foreach ($userData[$sessionId]['messages'] as &$message) {
-        if ($message['type'] === $type) {
-            $message['value'] = $value;
-            $found = true;
-            break;
-        }
-    }
 
-    if (!$found) {
-        $userData[$sessionId]['messages'][] = [
-            'type' => $type,
-            'value' => $value
-        ];
-    }
+	    $found = false;
 
-    file_put_contents($dataFile, json_encode($userData, JSON_PRETTY_PRINT));
+	    foreach ($userData[$sessionId]['messages'] as &$message) {
+	        if ($message['type'] === $type) {
+	            $message['value'] = $value;
+	            $found = true;
+	            break;
+	        }
+	    }
 
-    echo "Data saved V4";
-}
+	    if (!$found) {
+	        $userData[$sessionId]['messages'][] = [
+	            'type' => $type,
+	            'value' => $value
+	        ];
+	    }
+
+	    file_put_contents($dataFile, json_encode($userData, JSON_PRETTY_PRINT));
+
+	    echo "Data saved V4";
+	}
 
 	$worker->onConnect = function ($connection) {
 		$connections[$connection->id] = $connection;

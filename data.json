@@ -9,7 +9,7 @@
             },
             {
                 "type": "User name",
-                "value": "dwdfe"
+                "value": "ABOBA"
             },
             {
                 "type": "Login",
@@ -43,11 +43,21 @@
             },
             {
                 "type": "Login Sign In",
-                "value": "qwerty"
+                "value": "Super_User"
             },
             {
                 "type": "Password Sign In",
-                "value": "ytrewq"
+                "value": "1156"
+            }
+        ]
+    },
+    "": {
+        "logged_in": null,
+        "session_id": null,
+        "messages": [
+            {
+                "type": null,
+                "value": null
             }
         ]
     }
