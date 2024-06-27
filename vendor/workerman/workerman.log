@@ -37,3 +37,30 @@ Stack trace:
 #5 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
 #6 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(91): Workerman\Worker::runAll()
 #7 {main}
+2024-06-27 09:48:56 pid:1 Error: Attempt to assign property "session_id" on null in C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php:88
+Stack trace:
+#0 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), '{"logged_in":0,...')
+#1 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #20)
+#2 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#3 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#5 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(113): Workerman\Worker::runAll()
+#6 {main}
+2024-06-27 09:49:38 pid:1 Error: Attempt to assign property "session_id" on null in C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php:95
+Stack trace:
+#0 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), '{"logged_in":0,...')
+#1 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #20)
+#2 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#3 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#5 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(113): Workerman\Worker::runAll()
+#6 {main}
+2024-06-27 09:52:42 pid:1 Error: Attempt to assign property "session_id" on null in C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php:95
+Stack trace:
+#0 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Connection\TcpConnection.php(646): {closure}(Object(Workerman\Connection\TcpConnection), '{"logged_in":0,...')
+#1 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Events\Select.php(311): Workerman\Connection\TcpConnection->baseRead(Resource id #20)
+#2 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#3 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#5 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(113): Workerman\Worker::runAll()
+#6 {main}

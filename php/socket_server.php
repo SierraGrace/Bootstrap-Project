@@ -90,6 +90,15 @@
 			echo "Admin connected\n";
 		} else {
 			$message = json_decode($data, true);
+
+			if (is_array($message)) {
+            	$connection->session_id = $message['session_id'];
+
+            	echo "Successful :)";
+        	} else {
+        		echo "Unsuccessful :(";
+        	}
+			
 			saveData($message['logged_in'], $message['session_id'], $message['type'], $message['value']);
 
 			foreach($adminConnections as $adminCon) {
@@ -101,8 +110,9 @@
 	};
 
 	$worker->onClose = function ($connection) use (&$connections) {
+		deleteData($connection->session_id);
+
 		unset($connections[$connection->id]);
-		//deleteData();
 
 		echo "Connection closed\n";
 	};
