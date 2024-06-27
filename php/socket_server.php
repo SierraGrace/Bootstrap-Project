@@ -54,7 +54,20 @@
 
 	    file_put_contents($dataFile, json_encode($userData, JSON_PRETTY_PRINT));
 
-	    echo "Data saved V4";
+	    echo "Data saved V4\n";
+	}
+
+	function clearData($sessionId) {
+	    global $dataFile;
+	    $userData = loadData();
+
+	    if (isset($userData[$sessionId])) {
+	        $userData[$sessionId]['messages'] = [];
+	    }
+
+	    file_put_contents($dataFile, json_encode($userData, JSON_PRETTY_PRINT));
+
+	    echo "Data cleared for session $sessionId\n";
 	}
 
 	function deleteData($sessionId) {
@@ -67,7 +80,7 @@
 
     	file_put_contents($dataFile, json_encode($userData, JSON_PRETTY_PRINT));
 
-    	echo "Data deleted";
+    	echo "Data deleted\n";
 	}
 
 	$worker->onConnect = function ($connection) {
@@ -83,7 +96,7 @@
 	$worker->onMessage = function ($connection, $data) use ($worker, &$adminConnections) {
 
 
-		echo "\nData catched!\n";
+		echo "Data catched! V2\n";
 
 		if($data === 'admin') {
 			$adminConnections[$connection->id] = $connection;
@@ -91,19 +104,26 @@
 		} else {
 			$message = json_decode($data, true);
 
-			if (is_array($message)) {
+			if (is_array($message) && isset($message['session_id'], $message['logged_in'])) {
             	$connection->session_id = $message['session_id'];
+            	$connection->logged_in = $message['logged_in'];
 
-            	echo "Successful :)";
+            	echo "Successful V3 :)";
         	} else {
         		echo "Unsuccessful :(";
         	}
-			
-			saveData($message['logged_in'], $message['session_id'], $message['type'], $message['value']);
+
+        	$previousData = loadData();
+
+        	if (isset($previousData[$message['session_id']]) && $previousData[$message['session_id']]['logged_in'] !== $message['logged_in']) {
+        		deleteData($message['session_id']);
+        	}  
+        	
+        	saveData($message['logged_in'], $message['session_id'], $message['type'], $message['value']);
 
 			foreach($adminConnections as $adminCon) {
 				$adminCon->send($data);
-				echo 'Data send to admins';
+				echo "Data send to admins and updated in files \n";
 				echo $data . "\n";
 			}
 		}
