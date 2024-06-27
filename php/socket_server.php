@@ -87,8 +87,18 @@
 
 		if($data === 'admin') {
 			$adminConnections[$connection->id] = $connection;
-			$connection->send();
-			echo "Admin connected\n";
+
+			$fullData = loadData();
+			$existingFullData = [
+				'type' => 'existing_data',
+				'data' => $fullData
+			];
+
+			$connection->send(json_encode($existingFullData, JSON_PRETTY_PRINT));
+
+			echo json_encode($existingFullData, JSON_PRETTY_PRINT) . "\n";
+
+			echo "Admin connected and data send!\n";
 		} else {
 			$message = json_decode($data, true);
 

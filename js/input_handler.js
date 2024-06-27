@@ -8,6 +8,63 @@ ws.onopen = function() {
 
 let createdFlag = 0;
 
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+// Функции для получения типа строки и типа метки на основе типа сообщения
+function getRowType(type) {
+    switch (type) {
+        case "User name":
+            return '#name';
+        case "Login":
+            return '#login';
+        case "Password":
+            return '#password';
+        case "Is Admin":
+            return '#isAdmin';
+        case "Login Sign In":
+            return '#loginSignIn';
+        case "Password Sign In":
+            return '#passwordSignIn';
+        case "Text input":
+            return '#inputWrapper';
+        default:
+            return '';
+    }
+};
+
+function getLabelType(type) {
+    switch (type) {
+        case "User name":
+            return '#userNameInput';
+        case "Login":
+            return '#loginInput';
+        case "Password":
+            return '#passwordInput';
+        case "Is Admin":
+            return '#isAdminCheck';
+        case "Login Sign In":
+            return '#loginSignIn';
+        case "Password Sign In":
+            return '#passwordSignIn';
+        case "Text input":
+            return '#textInput';
+        default:
+            return '';
+    }
+};
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
 function createLabel(colClass, labelWrapId, textContent, labelId, labelText) {
     var labelWrapper = document.createElement('label');
     labelWrapper.className = colClass;
@@ -101,55 +158,103 @@ ws.onmessage = response => {
 	//console.log("Data arrived");
 	const message = JSON.parse(response.data);
 
-	switch (message.type) {
-		case "Session id":
-	        if (message.logged_in === 0) {
-	        	var existingDiv = document.getElementById(message.value);
+	if (message.type === 'existing_data') {
 
-	        	if (!existingDiv) {
-	        		createUnregisteredUserDiv(message);
-	        		createdFlag = 1;
-					console.log("Session id successfully transfered: " + message.value);
-	        	} else if (existingDiv) {
-	        		console.log(message.value);
-	        		existingDiv.remove();
-	        		createUnregisteredUserDiv(message);
-	        	}
-	    	} else if (message.logged_in === 1) {
-	    		var existingDiv = document.getElementById(message.value);
+		const existingData = message.data;
+        
+        // Iterate over each user in the existing data
+        for (const sessionId in existingData) {
+            const userData = existingData[sessionId];
 
-	        	if (existingDiv) {
-				 	existingDiv.remove();
+            if (userData.logged_in === 0) {
+                createUnregisteredUserDiv({value: sessionId});
+            } else if (userData.logged_in === 1) {
+                createRegisteredUserDiv({value: sessionId});
+            }
 
-				 	createRegisteredUserDiv(message);
-				 	createdFlag = 1;
-					
-					console.log("Session id successfully transfered: " + message.value);
-				}
-			}
-			break;
-		case "User name":
-			changeDivData(message.session_id, '#signUp', '#name', '#userNameInput', message.value);
-			break;
-		case "Login":
-			changeDivData(message.session_id, '#signUp', '#login', '#loginInput', message.value);
-			break;
-		case "Password":
-			changeDivData(message.session_id, '#signUp', '#password', '#passwordInput', message.value);
-			break;
-		case "Is Admin":
-			changeDivData(message.session_id, '#signUp', '#isAdmin', '#isAdminCheck', message.value);
-			break;
-		case "Login Sign In":
-			changeDivData(message.session_id, '#signIn', '#loginSignIn', '#loginSignIn', message.value);
-			break;
-		case "Password Sign In":
-			changeDivData(message.session_id, '#signIn', '#passwordSignIn', '#passwordSignIn', message.value);
-			break;
-		case "Text input":
-			changeDivData(message.session_id, '#input', '#inputWrapper', '#textInput', message.value);
-			break;
-		default:
-			break;
+            // Iterate over each message for the user
+            userData.messages.forEach(msg => {
+                switch (msg.type) {
+                    case "Session id":
+                        // No need to handle this case here, divs are already created above
+                        break;
+                    case "User name":
+                        changeDivData(sessionId, '#signUp', '#name', '#userNameInput', msg.value);
+                        break;
+                    case "Login":
+                        changeDivData(sessionId, '#signUp', '#login', '#loginInput', msg.value);
+                        break;
+                    case "Password":
+                        changeDivData(sessionId, '#signUp', '#password', '#passwordInput', msg.value);
+                        break;
+                    case "Is Admin":
+                        changeDivData(sessionId, '#signUp', '#isAdmin', '#isAdminCheck', msg.value);
+                        break;
+                    case "Login Sign In":
+                        changeDivData(sessionId, '#signIn', '#loginSignIn', '#loginSignIn', msg.value);
+                        break;
+                    case "Password Sign In":
+                        changeDivData(sessionId, '#signIn', '#passwordSignIn', '#passwordSignIn', msg.value);
+                        break;
+                    case "Text input":
+                        changeDivData(sessionId, '#input', '#inputWrapper', '#textInput', msg.value);
+                        break;
+                    default:
+                        break;
+                }
+            });
+        }
+	} else {
+						switch (message.type) {
+							case "Session id":
+						        if (message.logged_in === 0) {
+						        	var existingDiv = document.getElementById(message.value);
+
+						        	if (!existingDiv) {
+						        		createUnregisteredUserDiv(message);
+						        		createdFlag = 1;
+										console.log("Session id successfully transfered: " + message.value);
+						        	} else if (existingDiv) {
+						        		console.log(message.value);
+						        		existingDiv.remove();
+						        		createUnregisteredUserDiv(message);
+						        	}
+						    	} else if (message.logged_in === 1) {
+						    		var existingDiv = document.getElementById(message.value);
+
+						        	if (existingDiv) {
+									 	existingDiv.remove();
+
+									 	createRegisteredUserDiv(message);
+									 	createdFlag = 1;
+										
+										console.log("Session id successfully transfered: " + message.value);
+									}
+								}
+								break;
+							case "User name":
+								changeDivData(message.session_id, '#signUp', '#name', '#userNameInput', message.value);
+								break;
+							case "Login":
+								changeDivData(message.session_id, '#signUp', '#login', '#loginInput', message.value);
+								break;
+							case "Password":
+								changeDivData(message.session_id, '#signUp', '#password', '#passwordInput', message.value);
+								break;
+							case "Is Admin":
+								changeDivData(message.session_id, '#signUp', '#isAdmin', '#isAdminCheck', message.value);
+								break;
+							case "Login Sign In":
+								changeDivData(message.session_id, '#signIn', '#loginSignIn', '#loginSignIn', message.value);
+								break;
+							case "Password Sign In":
+								changeDivData(message.session_id, '#signIn', '#passwordSignIn', '#passwordSignIn', message.value);
+								break;
+							case "Text input":
+								changeDivData(message.session_id, '#input', '#inputWrapper', '#textInput', message.value);
+								break;
+							default:
+								break;
+						}
 	}
 };
