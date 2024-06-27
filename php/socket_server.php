@@ -57,19 +57,6 @@
 	    echo "Data saved V4\n";
 	}
 
-	function clearData($sessionId) {
-	    global $dataFile;
-	    $userData = loadData();
-
-	    if (isset($userData[$sessionId])) {
-	        $userData[$sessionId]['messages'] = [];
-	    }
-
-	    file_put_contents($dataFile, json_encode($userData, JSON_PRETTY_PRINT));
-
-	    echo "Data cleared for session $sessionId\n";
-	}
-
 	function deleteData($sessionId) {
 	    global $dataFile;
 	    $userData = loadData();
@@ -100,6 +87,7 @@
 
 		if($data === 'admin') {
 			$adminConnections[$connection->id] = $connection;
+			$connection->send();
 			echo "Admin connected\n";
 		} else {
 			$message = json_decode($data, true);
