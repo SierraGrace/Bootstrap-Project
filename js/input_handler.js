@@ -201,18 +201,6 @@ ws.onmessage = response => {
         }
 	} else {
 		switch (message.type) {
-            // case "remove_user":
-            //     const unregisteredUsersDiv = document.getElementById('unregisteredUsers');
-            //         while (unregisteredUsersDiv.firstChild) {
-            //             unregisteredUsersDiv.removeChild(unregisteredUsersDiv.firstChild);
-            //         }
-            //                     // const userDiv = document.getElementById(message.session_id);
-
-                // if (userDiv) {
-                //     userDiv.remove();
-                // }
-                // console.log("User removed: " + message.session_id);
-                break;
 			case "Session id":
 		        if (message.logged_in === 0) {
 		        	var existingDiv = document.getElementById(message.value);

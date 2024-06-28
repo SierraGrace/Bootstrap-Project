@@ -1,0 +1,26 @@
+{
+    "kpjag8sfpjnkuikdvnl8fa0klq": {
+        "logged_in": 0,
+        "session_id": "kpjag8sfpjnkuikdvnl8fa0klq",
+        "messages": [
+            {
+                "type": "Session id",
+                "value": "kpjag8sfpjnkuikdvnl8fa0klq"
+            }
+        ]
+    },
+    "gfljt3i4krsui6oemuj93fm3a9": {
+        "logged_in": 1,
+        "session_id": "gfljt3i4krsui6oemuj93fm3a9",
+        "messages": [
+            {
+                "type": "Session id",
+                "value": "gfljt3i4krsui6oemuj93fm3a9"
+            },
+            {
+                "type": "Text input",
+                "value": "test"
+            }
+        ]
+    }
+}
