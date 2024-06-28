@@ -23,3 +23,11 @@ body {
     background-color: #5e35b1;
     border-color: #5e35b1;
 }
+
+.form-check-input {
+            width: 1.2em;
+            height: 1.2em;
+        }
+        .btn {
+            color: #fff;
+        }
