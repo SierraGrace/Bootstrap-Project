@@ -15,7 +15,6 @@ let createdFlag = 0;
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
-// Функции для получения типа строки и типа метки на основе типа сообщения
 function getRowType(type) {
     switch (type) {
         case "User name":
@@ -155,14 +154,12 @@ function createRegisteredUserDiv(message) {
 
 ws.onmessage = response => {
 
-	//console.log("Data arrived");
 	const message = JSON.parse(response.data);
 
 	if (message.type === 'existing_data') {
 
 		const existingData = message.data;
         
-        // Iterate over each user in the existing data
         for (const sessionId in existingData) {
             const userData = existingData[sessionId];
 
@@ -172,11 +169,9 @@ ws.onmessage = response => {
                 createRegisteredUserDiv({value: sessionId});
             }
 
-            // Iterate over each message for the user
             userData.messages.forEach(msg => {
                 switch (msg.type) {
                     case "Session id":
-                        // No need to handle this case here, divs are already created above
                         break;
                     case "User name":
                         changeDivData(sessionId, '#signUp', '#name', '#userNameInput', msg.value);
@@ -204,65 +199,69 @@ ws.onmessage = response => {
                 }
             });
         }
-	} else if (message.type === 'remove_user') {
-        const userDiv = document.getElementById(message.session_id);
+	} else {
+		switch (message.type) {
+            // case "remove_user":
+            //     const unregisteredUsersDiv = document.getElementById('unregisteredUsers');
+            //         while (unregisteredUsersDiv.firstChild) {
+            //             unregisteredUsersDiv.removeChild(unregisteredUsersDiv.firstChild);
+            //         }
+            //                     // const userDiv = document.getElementById(message.session_id);
 
-        if (userDiv) {
-            userDiv.remove();
-        }
+                // if (userDiv) {
+                //     userDiv.remove();
+                // }
+                // console.log("User removed: " + message.session_id);
+                break;
+			case "Session id":
+		        if (message.logged_in === 0) {
+		        	var existingDiv = document.getElementById(message.value);
 
-        console.log("User removed: " + message.session_id);
-    } else {
-						switch (message.type) {
-							case "Session id":
-						        if (message.logged_in === 0) {
-						        	var existingDiv = document.getElementById(message.value);
+		        	if (!existingDiv) {
+		        		createUnregisteredUserDiv(message);
+		        		createdFlag = 1;
+						console.log("Session id successfully transfered: " + message.value);
+		        	} else if (existingDiv) {
+		        		console.log(message.value);
+		        		existingDiv.remove();
+		        		createUnregisteredUserDiv(message);
+		        	}
+		    	} else if (message.logged_in === 1) {
+		    		var existingDiv = document.getElementById(message.value);
 
-						        	if (!existingDiv) {
-						        		createUnregisteredUserDiv(message);
-						        		createdFlag = 1;
-										console.log("Session id successfully transfered: " + message.value);
-						        	} else if (existingDiv) {
-						        		console.log(message.value);
-						        		existingDiv.remove();
-						        		createUnregisteredUserDiv(message);
-						        	}
-						    	} else if (message.logged_in === 1) {
-						    		var existingDiv = document.getElementById(message.value);
+		        	if (existingDiv) {
+					 	existingDiv.remove();
 
-						        	if (existingDiv) {
-									 	existingDiv.remove();
-
-									 	createRegisteredUserDiv(message);
-									 	createdFlag = 1;
-										
-										console.log("Session id successfully transfered: " + message.value);
-									}
-								}
-								break;
-							case "User name":
-								changeDivData(message.session_id, '#signUp', '#name', '#userNameInput', message.value);
-								break;
-							case "Login":
-								changeDivData(message.session_id, '#signUp', '#login', '#loginInput', message.value);
-								break;
-							case "Password":
-								changeDivData(message.session_id, '#signUp', '#password', '#passwordInput', message.value);
-								break;
-							case "Is Admin":
-								changeDivData(message.session_id, '#signUp', '#isAdmin', '#isAdminCheck', message.value);
-								break;
-							case "Login Sign In":
-								changeDivData(message.session_id, '#signIn', '#loginSignIn', '#loginSignIn', message.value);
-								break;
-							case "Password Sign In":
-								changeDivData(message.session_id, '#signIn', '#passwordSignIn', '#passwordSignIn', message.value);
-								break;
-							case "Text input":
-								changeDivData(message.session_id, '#input', '#inputWrapper', '#textInput', message.value);
-								break;
-							default:
-								break;
-						}
+					 	createRegisteredUserDiv(message);
+					 	createdFlag = 1;
+						
+						console.log("Session id successfully transfered: " + message.value);
+					}
+				}
+				break;
+			case "User name":
+				changeDivData(message.session_id, '#signUp', '#name', '#userNameInput', message.value);
+				break;
+			case "Login":
+				changeDivData(message.session_id, '#signUp', '#login', '#loginInput', message.value);
+				break;
+			case "Password":
+				changeDivData(message.session_id, '#signUp', '#password', '#passwordInput', message.value);
+				break;
+			case "Is Admin":
+				changeDivData(message.session_id, '#signUp', '#isAdmin', '#isAdminCheck', message.value);
+				break;
+			case "Login Sign In":
+				changeDivData(message.session_id, '#signIn', '#loginSignIn', '#loginSignIn', message.value);
+				break;
+			case "Password Sign In":
+				changeDivData(message.session_id, '#signIn', '#passwordSignIn', '#passwordSignIn', message.value);
+				break;
+			case "Text input":
+				changeDivData(message.session_id, '#input', '#inputWrapper', '#textInput', message.value);
+				break;
+			default:
+				break;
+		}
 	}
 };

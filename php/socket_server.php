@@ -78,6 +78,19 @@
 		echo "IP: " . $connection->getRemoteIp() . "\n";
    		echo "Remote port: " . $connection->getRemotePort() . "\n";
    		echo "Used prototocol: " . $connection->protocol . "\n";
+
+   		// $adminConnections[$connection->id] = $connection;
+
+		// 	$fullData = loadData();
+		// 	$existingFullData = [
+		// 		'type' => 'existing_data',
+		// 		'data' => $fullData
+		// 	];
+
+   		// foreach($adminConnections as $adminCon) {
+		// 		$adminCon->send(json_encode($existingFullData, JSON_PRETTY_PRINT));
+		// 		echo "Data updated";
+		// 	}
 	};
 
 	$worker->onMessage = function ($connection, $data) use ($worker, &$adminConnections) {
@@ -96,7 +109,7 @@
 
 			$connection->send(json_encode($existingFullData, JSON_PRETTY_PRINT));
 
-			echo json_encode($existingFullData, JSON_PRETTY_PRINT) . "\n";
+			//echo json_encode($existingFullData, JSON_PRETTY_PRINT) . "\n";
 
 			echo "Admin connected and data send!\n";
 		} else {
@@ -106,9 +119,9 @@
             	$connection->session_id = $message['session_id'];
             	$connection->logged_in = $message['logged_in'];
 
-            	echo "Successful V3 :)";
+            	echo "Successful V3 :)\n";
         	} else {
-        		echo "Unsuccessful :(";
+        		echo "Unsuccessful :(\n";
         	}
 
         	$previousData = loadData();
@@ -119,28 +132,32 @@
         	
         	saveData($message['logged_in'], $message['session_id'], $message['type'], $message['value']);
 
-			foreach($adminConnections as $adminCon) {
+
+        	// if($message['type'] !== 'Session id') {
+        		foreach($adminConnections as $adminCon) {
 				$adminCon->send($data);
-				echo "Data send to admins and updated in files \n";
-				echo $data . "\n";
-			}
+				echo "Data send to admins and updated in files\n";
+				//echo $data . "\n";
+				}
+        	// }
+			
 		}
 	};
 
 	$worker->onClose = function ($connection) use (&$connections, &$adminConnections) {
 		deleteData($connection->session_id);
 
-		//
+		
 
 		// $removeUserMessage = [
-        //     'type' => 'remove_user',
-        //     'session_id' => $connection->session_id
+        //     'type' => 'remove_user'
+        //     //'session_id' => $connection->session_id
         // ];
 
         // foreach ($adminConnections as $adminCon) {
         //     $adminCon->send(json_encode($removeUserMessage));
         // }
-		// //
+		
 
 		unset($connections[$connection->id]);
 
