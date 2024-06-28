@@ -20,21 +20,21 @@
             <div class="col-md-6">
                 <div class="form-container">
                     <h2>Sign Up</h2>
-                    <form>
+                    <form action="php/sign_up.php" method="post">
                         <div class="form-group">
                             <label for="username">User Name</label>
-                            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                            <input type="text" class="form-control" name="username" placeholder="Enter your username">
                         </div>
                         <div class="form-group">
                             <label for="login">Login</label>
-                            <input type="text" class="form-control" id="login" placeholder="Enter your login">
+                            <input type="text" class="form-control" name="login" placeholder="Enter your login">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                            <input type="password" class="form-control" name="password" placeholder="Enter your password">
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="adminCheck">
+                            <input type="checkbox" class="form-check-input" name="adminCheck">
                             <label class="form-check-label" for="adminCheck">Admin</label>
                         </div>
                         <button type="submit" class="btn btn-block">Sign Up</button>
