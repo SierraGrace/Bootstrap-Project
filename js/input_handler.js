@@ -204,7 +204,15 @@ ws.onmessage = response => {
                 }
             });
         }
-	} else {
+	} else if (message.type === 'remove_user') {
+        const userDiv = document.getElementById(message.session_id);
+
+        if (userDiv) {
+            userDiv.remove();
+        }
+
+        console.log("User removed: " + message.session_id);
+    } else {
 						switch (message.type) {
 							case "Session id":
 						        if (message.logged_in === 0) {

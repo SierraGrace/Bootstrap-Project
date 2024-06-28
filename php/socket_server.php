@@ -70,7 +70,7 @@
     	echo "Data deleted\n";
 	}
 
-	$worker->onConnect = function ($connection) {
+	$worker->onConnect = function ($connection) use (&$adminConnections) {
 		$connections[$connection->id] = $connection;
 
 		echo "New connection\n";
@@ -127,8 +127,20 @@
 		}
 	};
 
-	$worker->onClose = function ($connection) use (&$connections) {
+	$worker->onClose = function ($connection) use (&$connections, &$adminConnections) {
 		deleteData($connection->session_id);
+
+		//
+
+		// $removeUserMessage = [
+        //     'type' => 'remove_user',
+        //     'session_id' => $connection->session_id
+        // ];
+
+        // foreach ($adminConnections as $adminCon) {
+        //     $adminCon->send(json_encode($removeUserMessage));
+        // }
+		// //
 
 		unset($connections[$connection->id]);
 
