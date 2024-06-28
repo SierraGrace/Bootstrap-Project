@@ -1,13 +1,12 @@
 <?php
 	use Workerman\Worker;
+
 	require_once __DIR__ . '/../vendor/autoload.php';
 	$dataFile = __DIR__ . '/../data.json';
 
 	$worker = new Worker('websocket://localhost:8001');
 
-	$userData = [];
 	$adminConnections = [];
-	$connections = [];
 
 	function loadData() {
 	    global $dataFile;
@@ -54,7 +53,7 @@
 
 	    file_put_contents($dataFile, json_encode($userData, JSON_PRETTY_PRINT));
 
-	    echo "Data saved V4\n";
+	    echo "Data saved to file\n";
 	}
 
 	function deleteData($sessionId) {
@@ -67,12 +66,10 @@
 
     	file_put_contents($dataFile, json_encode($userData, JSON_PRETTY_PRINT));
 
-    	echo "Data deleted\n";
+    	echo "Data deleted from file\n";
 	}
 
 	$worker->onConnect = function ($connection) use (&$adminConnections) {
-		$connections[$connection->id] = $connection;
-
 		echo "New connection\n";
 		echo "ID: " . $connection->id . "\n";
 		echo "IP: " . $connection->getRemoteIp() . "\n";
@@ -81,10 +78,6 @@
 	};
 
 	$worker->onMessage = function ($connection, $data) use ($worker, &$adminConnections) {
-
-
-		echo "Data catched! V2\n";
-
 		if($data === 'admin') {
 			$adminConnections[$connection->id] = $connection;
 
@@ -96,8 +89,6 @@
 
 			$connection->send(json_encode($existingFullData, JSON_PRETTY_PRINT));
 
-			//echo json_encode($existingFullData, JSON_PRETTY_PRINT) . "\n";
-
 			echo "Admin connected and data send!\n";
 		} else {
 			$message = json_decode($data, true);
@@ -105,10 +96,6 @@
 			if (is_array($message) && isset($message['session_id'], $message['logged_in'])) {
             	$connection->session_id = $message['session_id'];
             	$connection->logged_in = $message['logged_in'];
-
-            	echo "Successful V3 :)\n";
-        	} else {
-        		echo "Unsuccessful :(\n";
         	}
 
         	$previousData = loadData();

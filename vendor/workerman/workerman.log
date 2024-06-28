@@ -64,3 +64,25 @@ Stack trace:
 #4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
 #5 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(113): Workerman\Worker::runAll()
 #6 {main}
+2024-06-28 10:59:07 pid:1 Exception: You can't send(NULL) to client, you need to convert it to a string.  in C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Protocols\Websocket.php:243
+Stack trace:
+#0 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Connection\TcpConnection.php(329): Workerman\Protocols\Websocket::encode(NULL, Object(Workerman\Connection\TcpConnection))
+#1 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(90): Workerman\Connection\TcpConnection->send(NULL)
+#2 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(2579): {closure}(Object(Workerman\Connection\TcpConnection))
+#3 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Events\Select.php(311): Workerman\Worker->acceptConnection(Resource id #19)
+#4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#5 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#6 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#7 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(161): Workerman\Worker::runAll()
+#8 {main}
+2024-06-28 11:00:32 pid:1 Exception: You can't send(NULL) to client, you need to convert it to a string.  in C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Protocols\Websocket.php:243
+Stack trace:
+#0 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Connection\TcpConnection.php(329): Workerman\Protocols\Websocket::encode(NULL, Object(Workerman\Connection\TcpConnection))
+#1 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(90): Workerman\Connection\TcpConnection->send(NULL)
+#2 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(2579): {closure}(Object(Workerman\Connection\TcpConnection))
+#3 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Events\Select.php(311): Workerman\Worker->acceptConnection(Resource id #19)
+#4 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1488): Workerman\Events\Select->loop()
+#5 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(1405): Workerman\Worker::forkWorkersForWindows()
+#6 C:\xampp\htdocs\Bootstrap-Project\vendor\workerman\workerman\Worker.php(560): Workerman\Worker::forkWorkers()
+#7 C:\xampp\htdocs\Bootstrap-Project\php\socket_server.php(161): Workerman\Worker::runAll()
+#8 {main}
