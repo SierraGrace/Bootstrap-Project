@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="welcome-message">
-                    <h2>Welcome, User!</h2>
+                    <h2>Welcome, Guest!</h2>
                 </div>
             </div>
         </div>
