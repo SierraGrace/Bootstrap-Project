@@ -44,14 +44,14 @@
             <div class="col-md-6">
                 <div class="form-container">
                     <h2>Sign In</h2>
-                    <form>
+                    <form action="php/sign_in.php" method="post">
                         <div class="form-group">
-                            <label for="login2">Login</label>
-                            <input type="text" class="form-control" id="login2" placeholder="Enter your login">
+                            <label for="auth_login">Login</label>
+                            <input type="text" class="form-control" name="auth_login" placeholder="Enter your login">
                         </div>
                         <div class="form-group">
-                            <label for="password3">Password</label>
-                            <input type="password" class="form-control" id="password3" placeholder="Enter your password">
+                            <label for="auth_password">Password</label>
+                            <input type="password" class="form-control" name="auth_password" placeholder="Enter your password">
                         </div>
                         <button type="submit" class="btn btn-block">Sign In</button>
                     </form>
