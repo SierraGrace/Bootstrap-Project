@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+  $mysql = new mysqli('localhost', 'root', '', 'users-db');
+  $dataQueryResult = $mysql->query("SELECT * FROM `users`");
+  $mysql->close();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,6 +27,7 @@
                     <table class="table table-bordered data-table">
                         <thead class="thead-dark">
                             <tr>
+                                <th>Id</th>
                                 <th>User Name</th>
                                 <th>Login</th>
                                 <th>Password</th>
@@ -29,6 +35,19 @@
                             </tr>
                         </thead>
                         <tbody id="table-body">
+                            <?php
+                            while ($dataQueryResultProcessed = $dataQueryResult->fetch_assoc()) {
+                            ?>
+                                <tr>
+                                    <td><?=$dataQueryResultProcessed['id']?></td>
+                                    <td><?=$dataQueryResultProcessed['user_name']?></td>
+                                    <td><?=$dataQueryResultProcessed['login']?></td>
+                                    <td><?=$dataQueryResultProcessed['password']?></td>
+                                    <td><?=$dataQueryResultProcessed['is_admin'] == 1 ? 'true' : 'false'?></td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
