@@ -5,11 +5,11 @@
     $admin = isset($_POST['adminCheck']) ? 1 : 0;
 
     if (empty($username) || mb_strlen($username) > 50) {
-		echo "User name error<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
+		echo "User name is empty or incorrect<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
 	} else if (empty($login) || mb_strlen($login) > 50) {
-		echo "Login error<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
+		echo "Login is empty or incorrect<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
 	} else if (empty($password) || mb_strlen($password) > 32) {
-		echo "Password error<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
+		echo "Password is empty or incorrect<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
 	} else {
 
 	    $mysql = new mysqli('localhost', 'root', '', 'users-db');
