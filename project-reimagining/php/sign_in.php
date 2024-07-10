@@ -20,7 +20,7 @@
 				header('Location: ../pages/user-page.php');
 			} else {
 				$mysql->close();
-				header('Location: /pages/admin-page.php');
+				header('Location: ../pages/admin-page.php');
 			}		
 		} else {
 			$mysql->close();

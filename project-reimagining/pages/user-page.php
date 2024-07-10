@@ -6,6 +6,7 @@
     <title>User page</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+     
 </head>
 <body>
     <div class="container mt-5">
@@ -27,6 +28,13 @@
                         </div>
                         <button type="submit" class="btn btn-block mt-3">Submit</button>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="logout-block">
+                    <button type="button" class="btn btn-block">Log Out</button>
                 </div>
             </div>
         </div>

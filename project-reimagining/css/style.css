@@ -46,6 +46,28 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Добавляем тень */
 }
 
+/*Log Out block*/
+
+.logout-block {
+    background-color: #7e57c2;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.logout-block .btn {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+}
+
+.logout-block .btn:hover {
+    background-color: #c62828;
+    border-color: #c62828;
+}
+
 /*Admin dashboar style*/
 
 .data-table {
