@@ -1,76 +1,64 @@
-<?php
-    session_start();
-
-    $_SESSION['session_id'] = session_id();
-    $sessionData = [
-        'logged_in' => 0,
-        "session_id" => $_SESSION['session_id'],
-        'type' => 'Session id',
-        'value' => $_SESSION['session_id']
-    ];
-
-    $jsonSessionData = json_encode($sessionData);
-?>
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Bootstrap-Project</title>
-  </head>
-  <body>
-    <!-- <?php echo "<pre>"; var_dump($_SESSION);  echo "</pre>"; ?> -->
-    <div class="row">
-      <div class="col">
-        <form action="php/sign_up.php" method="post">
-          <h4>Sign up form</h4>
-          <div class="mb-3">
-            <label class="form-label">User name</label>
-            <input type="text" class="form-control" name="userNameInput" id="userNameInput"></input>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Login</label>
-            <input type="text" class="form-control" name="loginInput" id="loginInput"></input>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" name="passwordInput" id="passwordInput"></input>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="isAdmin" id="isAdminCheck"></input>
-            <label class="form-check-label">Admin</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Sign up</button>
-        </form>
-      </div>
-      <div class="col">
-        <form action="php/sign_in.php" method="post">
-          <h4>Sign in form</h4>
-          <div class="mb-3">
-            <label class="form-label">Login</label>
-            <input type="login" class="form-control" name="loginInput" id="loginSignIn"></input>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" name="passwordInput" id="passwordSignIn"></input>
-          </div>
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-      </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Sign Up Forms</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="welcome-message">
+                    <h2>Welcome, Guest!</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <h2>Sign Up</h2>
+                    <form action="php/sign_up.php" method="post">
+                        <div class="form-group">
+                            <label for="username">User Name</label>
+                            <input type="text" class="form-control" name="username" placeholder="Enter your username">
+                        </div>
+                        <div class="form-group">
+                            <label for="login">Login</label>
+                            <input type="text" class="form-control" name="login" placeholder="Enter your login">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" name="adminCheck">
+                            <label class="form-check-label" for="adminCheck">Admin</label>
+                        </div>
+                        <button type="submit" class="btn btn-block">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-container">
+                    <h2>Sign In</h2>
+                    <form action="php/sign_in.php" method="post">
+                        <div class="form-group">
+                            <label for="auth_login">Login</label>
+                            <input type="text" class="form-control" name="auth_login" placeholder="Enter your login">
+                        </div>
+                        <div class="form-group">
+                            <label for="auth_password">Password</label>
+                            <input type="password" class="form-control" name="auth_password" placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn btn-block">Sign In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script>
-        const ws = new WebSocket('ws://localhost:8001');
-
-        var sessionData = <?php echo $jsonSessionData;?>;
-        console.log("Session Data:", sessionData);
-
-        ws.onopen = function() {
-            ws.send(JSON.stringify(sessionData));
-            console.log('WebSocket connection opened');
-        };
-    </script>
-    <script src="js/input_tracker.js"></script>
-  </body>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

@@ -1,31 +1,30 @@
 <?php
-	$userName = $_POST['userNameInput'];
-	$login = $_POST['loginInput'];
-	$password = $_POST['passwordInput'];
+	$username = $_POST['username'];
+    $login = $_POST['login'];
+    $password = $_POST['password'];
+    $admin = isset($_POST['adminCheck']) ? 1 : 0;
 
-	if (isset($_POST['isAdmin'])) {
-		$isAdmin = 1;
-	} else {
-		$isAdmin = 0;
-	}
-
-	if (empty($userName) || mb_strlen($userName) > 50) {
-		echo "User name error<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
+    if (empty($username) || mb_strlen($username) > 50) {
+		echo "User name is empty or incorrect<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
 	} else if (empty($login) || mb_strlen($login) > 50) {
-		echo "Login error<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
+		echo "Login is empty or incorrect<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
 	} else if (empty($password) || mb_strlen($password) > 32) {
-		echo "Password error<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
+		echo "Password is empty or incorrect<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
 	} else {
-		$mysql = new mysqli('localhost', 'root', '', 'users-db');
-		$queryResult = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'");
+
+	    $mysql = new mysqli('localhost', 'root', '', 'users-db');
+
+	    $queryResult = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'");
 
 		if ((int)$queryResult->num_rows === 0) {
-			$mysql->query("INSERT INTO `users` (`user_name`, `login`, `password`, `is_admin`) VALUES ('$userName', '$login', '$password', '$isAdmin')");
-			$mysql->close();
+			$mysql->query("INSERT INTO `users` (`user_name`, `login`, `password`, `is_admin`) VALUES ('$username', '$login', '$password', '$admin')");
 
-			header('Location: http://localhost/Bootstrap-Project/index.php');
+			echo "Registration was successful<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
+
+			$mysql->close();
 		} else {
-			echo "Login has already been used by another user<br><a href=\"http://localhost/Bootstrap-Project\">Back to sign up form</a>";
+			echo "Login has already been used by another user<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining\">Back to sign up form</a>";
+
 			$mysql->close();
 		}
 	}
