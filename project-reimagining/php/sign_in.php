@@ -17,10 +17,10 @@
 
 			if ((int)$isAdminQueryResult['is_admin'] === 0) {
 				$mysql->close();
-				header('Location: ../user-page.html');
+				header('Location: ../pages/user-page.php');
 			} else {
 				$mysql->close();
-				header('Location: ../admin-page.php');
+				header('Location: /pages/admin-page.php');
 			}		
 		} else {
 			$mysql->close();
