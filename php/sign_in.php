@@ -3,7 +3,7 @@
 	$password = $_POST['auth_password'];
 
 	if (empty($login) || empty($password)) {
-		echo "Empty fields<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining/index.php\">Back to sign in form</a>";
+		echo "Empty fields<br><a href=\"http://localhost/Bootstrap-Project/index.php\">Back to sign in form</a>";
 	} else {
 		$mysql = new mysqli('localhost', 'root', '', 'users-db');
 		$queryResult = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
@@ -24,7 +24,7 @@
 			}		
 		} else {
 			$mysql->close();
-			echo "Wrong login or password<br><a href=\"http://localhost/Bootstrap-Project/project-reimagining/index.php\">Back to sign in form</a>";
+			echo "Wrong login or password<br><a href=\"http://localhost/Bootstrap-Project/index.php\">Back to sign in form</a>";
 		}
 	}
 ?>
