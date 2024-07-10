@@ -34,7 +34,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="logout-block">
-                    <button type="button" class="btn btn-block">Log Out</button>
+                    <form action="../php/sign_out.php" method="post">
+                        <button type="submit" class="btn-danger btn-block">Log Out</button>
+                    </form>
                 </div>
             </div>
         </div>
