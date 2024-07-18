@@ -23,18 +23,18 @@
                     <form action="php/sign_up.php" method="post">
                         <div class="form-group">
                             <label for="username">User Name</label>
-                            <input type="text" class="form-control" name="username" placeholder="Enter your username">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username">
                         </div>
                         <div class="form-group">
                             <label for="login">Login</label>
-                            <input type="text" class="form-control" name="login" placeholder="Enter your login">
+                            <input type="text" class="form-control" name="login" id="login" placeholder="Enter your login">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" name="adminCheck">
+                            <input type="checkbox" class="form-check-input" name="adminCheck" id="adminCheck">
                             <label class="form-check-label" for="adminCheck">Admin</label>
                         </div>
                         <button type="submit" class="btn btn-block">Sign Up</button>
@@ -47,11 +47,11 @@
                     <form action="php/sign_in.php" method="post">
                         <div class="form-group">
                             <label for="auth_login">Login</label>
-                            <input type="text" class="form-control" name="auth_login" placeholder="Enter your login">
+                            <input type="text" class="form-control" name="auth_login" id="auth_login" placeholder="Enter your login">
                         </div>
                         <div class="form-group">
                             <label for="auth_password">Password</label>
-                            <input type="password" class="form-control" name="auth_password" placeholder="Enter your password">
+                            <input type="password" class="form-control" name="auth_password" id="auth_password" placeholder="Enter your password">
                         </div>
                         <button type="submit" class="btn btn-block">Sign In</button>
                     </form>

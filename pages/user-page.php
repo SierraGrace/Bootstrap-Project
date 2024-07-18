@@ -24,7 +24,7 @@
                     <form>
                         <div class="form-group">
                             <label for="text-input">Input your text</label>
-                            <input type="text" class="form-control" id="text-input" placeholder="Enter text">
+                            <input type="text" class="form-control" name="usertext" id="usertext" placeholder="Enter text">
                         </div>
                         <button type="submit" class="btn btn-block mt-3">Submit</button>
                     </form>
@@ -42,5 +42,6 @@
         </div>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/user_input_tracker.js"></script>
 </body>
 </html>
