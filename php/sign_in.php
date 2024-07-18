@@ -5,7 +5,7 @@
 	if (empty($login) || empty($password)) {
 		echo "Empty fields<br><a href=\"http://localhost/Bootstrap-Project/index.php\">Back to sign in form</a>";
 	} else {
-		$mysql = new mysqli('localhost', 'root', '', 'users-db');
+		$mysql = new mysqli('localhost', 'root', '', 'bootstrap-project-db');
 		$queryResult = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
 		
 		if ($queryResult->num_rows > 0) {

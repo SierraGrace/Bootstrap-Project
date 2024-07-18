@@ -12,7 +12,7 @@
 		echo "Password is empty or incorrect<br><a href=\"http://localhost/Bootstrap-Project/index.php\">Back to sign up form</a>";
 	} else {
 
-	    $mysql = new mysqli('localhost', 'root', '', 'users-db');
+	    $mysql = new mysqli('localhost', 'root', '', 'bootstrap-project-db');
 
 	    $queryResult = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'");
 
