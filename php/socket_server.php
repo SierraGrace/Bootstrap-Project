@@ -11,5 +11,9 @@
 		echo "New connection\n";
 	};
 
+	$worker->onClose = function ($connection) {
+		echo "Connection closed\n";
+	};
+
 	Worker::runAll();
 ?>
