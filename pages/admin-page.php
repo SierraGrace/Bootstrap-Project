@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-  $mysql = new mysqli('localhost', 'root', '', 'users-db');
+  $mysql = new mysqli('localhost', 'root', '', 'bootstrap-project-db');
   $dataQueryResult = $mysql->query("SELECT * FROM `users`");
   $mysql->close();
 ?>
