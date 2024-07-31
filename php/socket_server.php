@@ -7,5 +7,9 @@
 
 	echo("Socket server has been started\n");
 
+	$worker->onConnect = function ($connection) {
+		echo "New connection\n";
+	};
+
 	Worker::runAll();
 ?>
