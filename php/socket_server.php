@@ -5,10 +5,20 @@
 
 	$worker = new Worker('websocket://localhost:8001');
 
+	$adminConnections = [];
+
 	echo("Socket server has been started\n");
 
 	$worker->onConnect = function ($connection) {
 		echo "New connection\n";
+	};
+
+	$worker->onMessage = function ($connection, $data) use ($worker, &$adminConnections) {
+		if($data === 'admin') {
+			$adminConnections[$connection->id] = $connection;
+
+			echo "Admin connected\n";
+		}
 	};
 
 	$worker->onClose = function ($connection) {
