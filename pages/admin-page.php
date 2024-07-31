@@ -100,10 +100,13 @@
         </div>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
     <script>
         const ws = new WebSocket('ws://localhost:8001');
-        console.log('WebSocket connection opened');
+
+        ws.onopen = function() {
+            ws.send('admin');
+        };
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
 </body>
 </html>
