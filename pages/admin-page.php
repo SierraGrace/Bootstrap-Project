@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" id="unregisteredUsers">
                 <h4 class="form-container">Unregistered Users</h4>
                 <div class="user-block">
                     <div class="mini-form">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" id="registeredUsers">
                 <h4 class="form-container">Registered Users</h4>
                 <div class="registered-user-block">
                     <div class="mini-form">
@@ -108,5 +108,6 @@
             ws.send('admin');
         };
     </script>
+    <script src="../js/admin_data_handler.js"></script>
 </body>
 </html>

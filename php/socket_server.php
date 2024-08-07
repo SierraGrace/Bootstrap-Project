@@ -21,6 +21,12 @@
 		} else {
 			echo "Data recieved\n";
 		}
+
+		foreach($adminConnections as $adminCon) {
+			$adminCon->send($data);
+
+			echo "Data send to admins\n";
+		}
 	};
 
 	$worker->onClose = function ($connection) {
