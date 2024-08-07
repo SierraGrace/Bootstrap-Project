@@ -10,4 +10,7 @@ usertext.addEventListener('keyup', event => {
 	message.value = usertext.value;
 
 	console.log(message);
+
+	let jsonMessage = JSON.stringify(message);
+	ws.send(jsonMessage);
 });

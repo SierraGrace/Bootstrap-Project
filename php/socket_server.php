@@ -19,7 +19,7 @@
 
 			echo "Admin connected\n";
 		} else {
-			echo "Data recieved";
+			echo "Data recieved\n";
 		}
 	};
 

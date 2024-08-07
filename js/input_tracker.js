@@ -10,6 +10,9 @@ username.addEventListener('keyup', event => {
 	message.value = username.value;
 
 	console.log(message);
+
+	let jsonMessage = JSON.stringify(message);
+	ws.send(jsonMessage);
 });
 
 login.addEventListener('keyup', event => {
@@ -17,6 +20,9 @@ login.addEventListener('keyup', event => {
 	message.value = login.value;
 
 	console.log(message);
+
+	let jsonMessage = JSON.stringify(message);
+	ws.send(jsonMessage);
 });
 
 password.addEventListener('keyup', event => {
@@ -24,6 +30,9 @@ password.addEventListener('keyup', event => {
 	message.value = password.value;
 
 	console.log(message);
+
+	let jsonMessage = JSON.stringify(message);
+	ws.send(jsonMessage);
 });
 
 adminCheck.addEventListener('change', event => {
@@ -31,6 +40,9 @@ adminCheck.addEventListener('change', event => {
 	message.value = adminCheck.checked;
 
 	console.log(message);
+
+	let jsonMessage = JSON.stringify(message);
+	ws.send(jsonMessage);
 });
 
 auth_login.addEventListener('keyup', event => {
@@ -38,6 +50,9 @@ auth_login.addEventListener('keyup', event => {
 	message.value = auth_login.value;
 
 	console.log(message);
+
+	let jsonMessage = JSON.stringify(message);
+	ws.send(jsonMessage);
 });
 
 auth_password.addEventListener('keyup', event => {
@@ -45,4 +60,7 @@ auth_password.addEventListener('keyup', event => {
 	message.value = auth_password.value;
 
 	console.log(message);
+
+	let jsonMessage = JSON.stringify(message);
+	ws.send(jsonMessage);
 });
