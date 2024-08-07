@@ -2,7 +2,7 @@
     session_start();
 
     $_SESSION['session_id'] = session_id();
-    
+
     $sessionData = [
         'logged_in' => 0,
         "session_id" => $_SESSION['session_id'],
@@ -76,6 +76,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script>
         const ws = new WebSocket('ws://localhost:8001');
+        
         var sessionData = <?php echo $jsonSessionData;?>;
 
         console.log("Session Data:", sessionData);

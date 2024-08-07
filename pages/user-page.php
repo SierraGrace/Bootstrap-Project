@@ -1,3 +1,15 @@
+<?php
+  session_start();
+
+  $sessionData = [
+      'logged_in' => 1,
+      "session_id" => $_SESSION['session_id'],
+      'type' => 'Session id',
+      'value' => $_SESSION['session_id']
+  ];
+
+  $jsonSessionData = json_encode($sessionData);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +56,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script>
         const ws = new WebSocket('ws://localhost:8001');
-        console.log('WebSocket connection opened');
+
+        var sessionData = <?php echo $jsonSessionData;?>;
+        
+        console.log("Session Data:", sessionData);
+
+        ws.onopen = function() {
+            ws.send(JSON.stringify(sessionData));
+            console.log('New WebSocket connection opened');
+        };
     </script>
     <script src="../js/user_input_tracker.js"></script>
 </body>

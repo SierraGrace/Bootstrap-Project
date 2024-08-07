@@ -1,5 +1,5 @@
 let message = {
-	"logged_in" : 0,
+	"logged_in" : 1,
 	"session_id" : "session_id",
 	"type" : "type",
 	"value" : "value"
