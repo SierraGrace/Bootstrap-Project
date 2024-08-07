@@ -18,6 +18,8 @@
 			$adminConnections[$connection->id] = $connection;
 
 			echo "Admin connected\n";
+		} else {
+			echo "Data recieved";
 		}
 	};
 
